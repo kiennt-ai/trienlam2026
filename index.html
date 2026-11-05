@@ -1,0 +1,2205 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trường Đại học Hàng hải Việt Nam - Hệ thống quản lý tàu biển thông minh SSMS | Triển lãm thành tựu khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số ngành Xây dựng năm 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter, Montserrat & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vmu: {
+                            darkest: '#00152e',
+                            navy: '#002147',
+                            deep: '#003366',
+                            ocean: '#0056B3',
+                            sky: '#0284C7',
+                            cyan: '#00B4D8',
+                            lightcyan: '#38BDF8',
+                            gold: '#F59E0B',
+                            goldlight: '#FDE68A',
+                            blueprint: '#3b66e6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    boxShadow: {
+                        'glow-cyan': '0 0 25px rgba(0, 180, 216, 0.35)',
+                        'glow-gold': '0 0 28px rgba(245, 158, 11, 0.4)',
+                        'glass': '0 8px 32px 0 rgba(0, 21, 46, 0.45)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Theme Styles & Animations for Trường Đại học Hàng hải Việt Nam */
+        :root {
+            --vmu-navy: #002147;
+            --vmu-deep: #003366;
+            --vmu-ocean: #0056B3;
+            --vmu-cyan: #00B4D8;
+            --vmu-gold: #F59E0B;
+        }
+
+        body {
+            background-color: #00152e;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(0, 33, 71, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.24);
+        }
+
+        .glass-panel-gold {
+            background: linear-gradient(135deg, rgba(0, 26, 56, 0.92) 0%, rgba(0, 43, 94, 0.88) 100%);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(245, 158, 11, 0.45);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), inset 0 0 20px rgba(245, 158, 11, 0.06);
+        }
+
+        /* 4-Scene Dynamic Background Crossfade & Ken Burns Effect */
+        .campus-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: opacity, transform;
+            pointer-events: none;
+        }
+
+        .campus-slide.active {
+            opacity: 1;
+        }
+
+        .campus-slide-inner {
+            width: 100%;
+            height: 100%;
+            transform: scale(1.0);
+            transition: transform 9s ease-out;
+        }
+
+        .campus-slide.active .campus-slide-inner {
+            transform: scale(1.06);
+        }
+
+        /* Black Background Removal & Screen Blending for Logo_VMU_70 & 3 Medals */
+        .emblem-screen-blend {
+            mix-blend-mode: screen;
+            filter: contrast(1.08) brightness(1.05);
+        }
+
+        /* Medal Hover Glow */
+        .medal-card {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .medal-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px -4px rgba(245, 158, 11, 0.35);
+        }
+
+        /* Animated Data Packet Flow */
+        @keyframes packetFlowRight {
+            0% { left: 4%; opacity: 0; transform: scale(0.8); }
+            15% { opacity: 1; transform: scale(1); }
+            85% { opacity: 1; transform: scale(1); }
+            100% { left: 92%; opacity: 0; transform: scale(0.8); }
+        }
+
+        @keyframes packetFlowLeft {
+            0% { left: 92%; opacity: 0; transform: scale(0.8); }
+            15% { opacity: 1; transform: scale(1); }
+            85% { opacity: 1; transform: scale(1); }
+            100% { left: 4%; opacity: 0; transform: scale(0.8); }
+        }
+
+        .packet-dot-right {
+            animation: packetFlowRight 3.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .packet-dot-left {
+            animation: packetFlowLeft 3.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Shimmer Text Effect */
+        .text-gradient-gold {
+            background: linear-gradient(90deg, #FDE68A 0%, #F59E0B 50%, #FDE68A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Balanced Typography Helpers to Prevent Overflow */
+        .banner-event-title {
+            font-size: clamp(0.7rem, 1.05vw, 0.875rem);
+            line-height: 1.45;
+            text-wrap: balance;
+        }
+
+        .banner-uni-title {
+            font-size: clamp(1.15rem, 2.1vw, 1.75rem);
+            line-height: 1.25;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-product-title {
+            font-size: clamp(1.65rem, 3.4vw, 3.1rem);
+            line-height: 1.18;
+            text-wrap: balance;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #00152e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0056B3;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00B4D8;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-vmu-cyan selection:text-vmu-darkest">
+
+    <!-- ===================================================================== -->
+    <!-- 1. STICKY NAVIGATION HEADER                                           -->
+    <!-- ===================================================================== -->
+    <header id="mainHeader" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#00152e]/95 backdrop-blur-md border-b border-vmu-lightcyan/20 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+            <!-- Brand Identity -->
+            <a href="#hero" class="flex items-center gap-3 min-w-0">
+                <div class="relative w-12 h-10 rounded-lg bg-gradient-to-br from-vmu-navy to-vmu-deep border border-vmu-gold/60 flex items-center justify-center p-0.5 shrink-0 overflow-hidden">
+                    <svg class="w-full h-full" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="72" cy="52" r="34" fill="#0284C7" fill-opacity="0.25" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="4 2"/>
+                        <path d="M12,26 C26,10 52,10 72,6 C58,28 40,52 34,76 C24,78 18,74 20,64 C24,48 34,34 46,22 C32,24 20,26 12,26 Z" fill="#EF4444"/>
+                        <polygon points="39,12 41,17 46,17 42,20 43,25 39,22 35,25 36,20 32,17 37,17" fill="#FACC15"/>
+                        <path d="M10,68 C28,56 52,82 96,62 C78,82 42,88 12,80 Z" fill="#0284C7"/>
+                        <path d="M8,84 C34,78 68,84 104,76 L98,94 L8,94 Z" fill="#0056B3"/>
+                        <circle cx="75" cy="50" r="14" stroke="#EF4444" stroke-width="2.5"/>
+                        <text x="64" y="55" fill="#ffffff" font-family="Montserrat" font-weight="900" font-size="8">VMU</text>
+                        <text x="12" y="92" fill="#ffffff" font-family="Montserrat" font-weight="800" font-size="9.5" letter-spacing="1">1956 - 2026</text>
+                    </svg>
+                    <img src="Logo_VMU_70.jpg" alt="Logo 70 năm Trường Đại học Hàng hải Việt Nam"
+                         class="vmu-chroma-img absolute inset-0 w-full h-full object-contain p-0.5 emblem-screen-blend"
+                         onerror="this.style.opacity='0'">
+                </div>
+                <div class="truncate">
+                    <div class="font-display font-extrabold text-xs sm:text-sm md:text-base text-white tracking-tight truncate">
+                        TRƯỜNG ĐẠI HỌC HÀNG HẢI VIỆT NAM
+                    </div>
+                    <div class="text-[10px] sm:text-[11px] text-vmu-lightcyan font-semibold truncate">
+                        HỆ THỐNG QUẢN LÝ TÀU BIỂN THÔNG MINH SSMS
+                    </div>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-1.5 text-xs font-semibold shrink-0">
+                <a href="#hero" class="px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition">Tổng quan SSMS</a>
+                <a href="#giai-phap" class="px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition">Bài toán & Giải pháp</a>
+                <a href="#live-demo" class="px-3.5 py-2 rounded-lg bg-vmu-cyan/20 border border-vmu-cyan/50 text-vmu-lightcyan hover:bg-vmu-cyan hover:text-vmu-darkest font-bold transition flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Giao diện Hệ thống SSMS
+                </a>
+                <a href="#thong-so" class="px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition">Kiến trúc & Thông số Kỹ thuật</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-2 shrink-0">
+                <a href="#live-demo" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-vmu-gold to-amber-500 text-vmu-darkest font-bold text-xs shadow-glow-gold hover:brightness-110 transition">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <span>Trải nghiệm Giao diện</span>
+                </a>
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl bg-white/10 text-white hover:bg-white/20" aria-label="Menu">
+                    <i class="fa-solid fa-bars text-base"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-vmu-navy/95 border-b border-vmu-lightcyan/20 px-4 pt-2 pb-4 space-y-1.5 text-xs font-semibold">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-white/10">1. Tổng quan Sản phẩm SSMS & Quyết định 1901/QĐ-TTg</a>
+            <a href="#giai-phap" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-white/10">2. Bài toán Thực tiễn & Giải pháp Công nghệ Cốt lõi</a>
+            <a href="#live-demo" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg bg-vmu-cyan/20 text-vmu-lightcyan">3. Trải nghiệm Trực quan Hệ thống Giao diện SSMS</a>
+            <a href="#thong-so" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-white/10">4. Kiến trúc Kỹ thuật & 09 Tiêu chuẩn Quốc tế</a>
+        </div>
+    </header>
+
+    <!-- ===================================================================== -->
+    <!-- 2. HERO SECTION: BALANCED TOP BANNER + SSMS PRODUCT SPOTLIGHT         -->
+    <!-- ===================================================================== -->
+    <section id="hero" class="relative min-h-screen pt-20 pb-14 flex flex-col justify-center overflow-hidden">
+
+        <!-- ================================================================= -->
+        <!-- LAYER 1: AUTOMATIC 4-SCENE DYNAMIC CAMPUS BACKGROUND SLIDESHOW    -->
+        <!-- ================================================================= -->
+        <div id="heroDynamicBackgrounds" class="absolute inset-0 z-0 overflow-hidden bg-vmu-darkest">
+
+            <!-- CẢNH 1: Khuon vien khu Hieu bo - (03.2023)_PNG.jpg -->
+            <div id="heroSlide-0" class="campus-slide active">
+                <div class="campus-slide-inner relative w-full h-full">
+                    <svg class="w-full h-full object-cover opacity-45" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="1600" height="900" fill="#001833"/>
+                        <path d="M120,670 L120,450 L460,430 L460,670 Z" fill="#002b5e" stroke="#38BDF8" stroke-width="2"/>
+                        <path d="M350,435 L350,385 C350,340 420,340 420,385 L420,432 Z" fill="#0284C7" stroke="#7DD3FC" stroke-width="2"/>
+                        <path d="M470,670 L470,490 L1120,425 L1480,445 L1480,695 L1120,685 L470,670 Z" fill="#003566" stroke="#60A5FA" stroke-width="2.5"/>
+                        <g transform="translate(1035, 150)">
+                            <path d="M25,585 L25,180 L65,205 L105,155 L105,595" fill="#e2e8f0" fill-opacity="0.7" stroke="#38BDF8" stroke-width="2.5"/>
+                            <circle cx="65" cy="95" r="56" stroke="#FDE68A" stroke-width="6" fill="#002147" fill-opacity="0.5"/>
+                        </g>
+                    </svg>
+                    <img src="Khuon vien khu Hieu bo - (03.2023)_PNG.jpg" alt="Khuôn viên Khu Hiệu bộ Trường Đại học Hàng hải Việt Nam"
+                         class="absolute inset-0 w-full h-full object-cover" onerror="this.style.opacity='0'">
+                </div>
+            </div>
+
+            <!-- CẢNH 2: Anh toan canh Khu Hieu bo (2) (1).jpg -->
+            <div id="heroSlide-1" class="campus-slide">
+                <div class="campus-slide-inner relative w-full h-full">
+                    <svg class="w-full h-full object-cover opacity-45" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="1600" height="900" fill="#001d3d"/>
+                        <g stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.45">
+                            <rect x="760" y="210" width="380" height="165" rx="12" fill="#065f46" fill-opacity="0.5"/>
+                            <polygon points="550,500 1030,500 1045,610 540,610" fill="#003566" stroke="#60A5FA" stroke-width="2"/>
+                            <circle cx="1220" cy="645" r="78" fill="#002147" stroke="#F59E0B" stroke-width="2.5"/>
+                        </g>
+                    </svg>
+                    <img src="Anh toan canh Khu Hieu bo (2) (1).jpg" alt="Toàn cảnh Khu Hiệu bộ Trường Đại học Hàng hải Việt Nam"
+                         class="absolute inset-0 w-full h-full object-cover" onerror="this.style.opacity='0'">
+                </div>
+            </div>
+
+            <!-- CẢNH 3: Anh toan canh Khu Hieu bo (1) (1).jpg -->
+            <div id="heroSlide-2" class="campus-slide">
+                <div class="campus-slide-inner relative w-full h-full">
+                    <svg class="w-full h-full object-cover opacity-45" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="1600" height="900" fill="#001833"/>
+                        <path d="M0,260 Q450,230 900,255 T1600,240 L1600,900 L0,900 Z" fill="#00254d"/>
+                        <circle cx="655" cy="740" r="65" fill="#001d3d" stroke="#F59E0B" stroke-width="2.5"/>
+                    </svg>
+                    <img src="Anh toan canh Khu Hieu bo (1) (1).jpg" alt="Toàn cảnh Khu Hiệu bộ nhìn từ trên cao"
+                         class="absolute inset-0 w-full h-full object-cover" onerror="this.style.opacity='0'">
+                </div>
+            </div>
+
+            <!-- CẢNH 4: Asset 2@4x (1).jpg -->
+            <div id="heroSlide-3" class="campus-slide">
+                <div class="campus-slide-inner relative w-full h-full bg-[#000918]">
+                    <svg class="w-full h-full object-cover opacity-65" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="1600" height="900" fill="#000814"/>
+                        <g stroke="#3b66e6" stroke-width="2" fill="none">
+                            <path d="M110,690 L110,470 L455,445 L455,690 Z" fill="#00122e" fill-opacity="0.6"/>
+                            <path d="M465,690 L465,505 L1125,435 L1485,458 L1485,715 L1125,705 L465,690 Z" fill="#00122e" fill-opacity="0.75"/>
+                        </g>
+                    </svg>
+                    <img src="Asset 2@4x (1).jpg" alt="Đồ họa kiến trúc Khu Hiệu bộ Trường Đại học Hàng hải Việt Nam"
+                         class="absolute inset-0 w-full h-full object-cover mix-blend-screen" onerror="this.style.opacity='0'">
+                </div>
+            </div>
+
+            <!-- Deep Ocean Overlay (#001a38 opacity 85%-90%) for maximum text clarity -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#00152e]/90 via-[#001a38]/86 to-[#00152e]/95"></div>
+        </div>
+
+        <!-- Layer 2: Interactive Maritime Digital Network Canvas -->
+        <canvas id="maritimeCanvas" class="absolute inset-0 z-0 pointer-events-none opacity-55"></canvas>
+
+        <!-- Layer 3: Main Hero Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-5">
+
+            <!-- ============================================================= -->
+            <!-- BALANCED CEREMONIAL TOP BANNER (ZERO TEXT OVERFLOW)           -->
+            <!-- ============================================================= -->
+            <div id="banner-vinh-danh" class="rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#001a38]/95 via-[#002b5e]/92 to-[#001a38]/95 border border-vmu-gold/55 shadow-glow-gold p-4 sm:p-6 relative overflow-hidden backdrop-blur-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-center relative z-10">
+
+                    <!-- Left (2 cols on lg): Official 70th Anniversary Logo (Logo_VMU_70.jpg) -->
+                    <div class="lg:col-span-2 flex flex-col items-center justify-center text-center lg:border-r border-white/15 lg:pr-4">
+                        <div class="relative w-28 h-24 sm:w-32 sm:h-28 rounded-xl bg-[#001229]/90 border border-vmu-gold/45 p-1.5 flex items-center justify-center shadow-inner overflow-hidden shrink-0">
+                            <!-- Vector SVG of Logo_VMU_70.jpg -->
+                            <svg class="w-full h-full" viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="148" cy="102" r="72" fill="#0284C7" fill-opacity="0.22" stroke="#7DD3FC" stroke-width="2"/>
+                                <path d="M82,75 Q148,55 214,75 M76,102 Q148,85 220,102 M82,130 Q148,115 214,130" stroke="#38BDF8" stroke-width="2.5" stroke-opacity="0.65"/>
+                                <path d="M22,58 C48,18 98,16 146,6 C118,52 84,96 68,148 C48,154 36,144 40,124 C48,94 68,68 92,44 C64,46 40,52 22,58 Z" fill="#EF4444"/>
+                                <polygon points="82,20 86,32 99,32 89,39 93,51 82,43 71,51 75,39 65,32 78,32" fill="#FACC15"/>
+                                <path d="M16,128 C52,102 104,162 198,118 C164,162 88,176 22,154 Z" fill="#0284C7"/>
+                                <path d="M12,166 C66,154 134,168 210,152 L198,188 L12,188 Z" fill="#0077B6"/>
+                                <circle cx="148" cy="96" r="28" stroke="#EF4444" stroke-width="5" fill="#001229" fill-opacity="0.7"/>
+                                <rect x="128" y="92" width="40" height="16" rx="2" fill="#00152e" stroke="#EF4444" stroke-width="2"/>
+                                <text x="132" y="104" fill="#ffffff" font-family="Montserrat" font-weight="900" font-size="12">VMU</text>
+                                <text x="20" y="183" fill="#ffffff" font-family="Montserrat" font-weight="900" font-size="18" letter-spacing="3">1956 - 2026</text>
+                            </svg>
+                            <img src="Logo_VMU_70.jpg" alt="Biểu trưng 70 năm Trường Đại học Hàng hải Việt Nam (1956 - 2026)"
+                                 class="vmu-chroma-img absolute inset-0 w-full h-full object-contain p-1 emblem-screen-blend"
+                                 onerror="this.style.opacity='0'">
+                        </div>
+                        <div class="mt-1.5 text-[10px] font-display font-bold text-vmu-goldlight tracking-wider uppercase">
+                            70 Năm (1956 - 2026)
+                        </div>
+                    </div>
+
+                    <!-- Center (7 cols on lg): Full Exhibition Name, University Name & Slogan (Balanced & Contained) -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-2 min-w-0 px-1">
+                        <!-- Event Title Badge (Wraps cleanly, never overflows) -->
+                        <div class="inline-block max-w-full px-3.5 py-1.5 rounded-xl bg-vmu-darkest/80 border border-vmu-gold/50 text-vmu-goldlight font-bold uppercase tracking-wide banner-event-title">
+                            <i class="fa-solid fa-compass-drafting text-vmu-gold mr-1.5"></i>TRIỂN LÃM THÀNH TỰU KHOA HỌC, CÔNG NGHỆ, ĐỔI MỚI SÁNG TẠO VÀ CHUYỂN ĐỔI SỐ NGÀNH XÂY DỰNG NĂM 2026
+                        </div>
+
+                        <!-- University Name -->
+                        <h2 class="font-display font-black text-white uppercase tracking-tight banner-uni-title break-words">
+                            TRƯỜNG ĐẠI HỌC HÀNG HẢI VIỆT NAM
+                        </h2>
+
+                        <!-- Slogan Badge -->
+                        <div class="pt-0.5">
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500/20 via-vmu-gold/30 to-amber-500/20 border border-vmu-gold/65 max-w-full">
+                                <i class="fa-solid fa-anchor text-vmu-gold text-xs shrink-0"></i>
+                                <span class="font-display font-extrabold tracking-wider text-xs sm:text-sm text-gradient-gold uppercase break-words">
+                                    KHẲNG ĐỊNH VỊ THẾ TRONG CÁC LĨNH VỰC MŨI NHỌN
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right (3 cols on lg): Compact Set of 3 High Medals & Honors -->
+                    <div class="lg:col-span-3 lg:border-l border-white/15 lg:pl-4">
+                        <div class="text-center text-[10px] font-bold uppercase tracking-wider text-vmu-goldlight mb-2 flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-star text-vmu-gold text-[9px]"></i>
+                            <span>Huân chương & Danh hiệu Cao quý</span>
+                            <i class="fa-solid fa-star text-vmu-gold text-[9px]"></i>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2">
+                            <!-- Medal 1: Huân chương Hồ Chí Minh -->
+                            <div class="medal-card rounded-xl bg-[#001229]/90 border border-vmu-gold/45 p-1.5 flex flex-col items-center text-center" title="Huân chương Hồ Chí Minh">
+                                <div class="relative w-11 h-16 sm:w-12 sm:h-18 flex items-center justify-center overflow-hidden shrink-0">
+                                    <svg class="w-full h-full" viewBox="0 0 90 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="20" y="4" width="50" height="14" rx="2" fill="#DC2626" stroke="#F59E0B" stroke-width="1.5"/>
+                                        <polygon points="22,24 68,24 80,68 45,86 10,68" fill="#DC2626" stroke="#B91C1C" stroke-width="1.5"/>
+                                        <line x1="36" y1="24" x2="54" y2="80" stroke="#FACC15" stroke-width="3.5"/>
+                                        <line x1="45" y1="24" x2="63" y2="75" stroke="#FACC15" stroke-width="3.5"/>
+                                        <circle cx="45" cy="107" r="22" fill="#F59E0B" stroke="#FDE68A" stroke-width="2"/>
+                                    </svg>
+                                    <img src="HC_HCM.jpg" alt="Huân chương Hồ Chí Minh"
+                                         class="vmu-chroma-img absolute inset-0 w-full h-full object-contain emblem-screen-blend"
+                                         onerror="this.style.opacity='0'">
+                                </div>
+                                <div class="mt-1 text-[9px] sm:text-[10px] font-semibold text-vmu-goldlight leading-tight line-clamp-2">
+                                    HC Hồ Chí Minh
+                                </div>
+                            </div>
+
+                            <!-- Medal 2: Anh hùng LLVTND -->
+                            <div class="medal-card rounded-xl bg-[#001229]/90 border border-vmu-gold/45 p-1.5 flex flex-col items-center text-center" title="Anh hùng Lực lượng vũ trang nhân dân">
+                                <div class="relative w-11 h-16 sm:w-12 sm:h-18 flex items-center justify-center overflow-hidden shrink-0">
+                                    <svg class="w-full h-full" viewBox="0 0 90 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="18" y="6" width="54" height="28" rx="2" fill="#DC2626" stroke="#F59E0B" stroke-width="4"/>
+                                        <line x1="45" y1="34" x2="45" y2="52" stroke="#F59E0B" stroke-width="4"/>
+                                        <polygon points="45,50 53,78 82,78 58,95 67,124 45,107 23,124 32,95 8,78 37,78" fill="#F59E0B" stroke="#FEF08A" stroke-width="1.5"/>
+                                    </svg>
+                                    <img src="AH_LLVT.jpg" alt="Anh hùng Lực lượng vũ trang nhân dân"
+                                         class="vmu-chroma-img absolute inset-0 w-full h-full object-contain emblem-screen-blend"
+                                         onerror="this.style.opacity='0'">
+                                </div>
+                                <div class="mt-1 text-[9px] sm:text-[10px] font-semibold text-vmu-goldlight leading-tight line-clamp-2">
+                                    AH LLVT Nhân dân
+                                </div>
+                            </div>
+
+                            <!-- Medal 3: Anh hùng Lao động -->
+                            <div class="medal-card rounded-xl bg-[#001229]/90 border border-vmu-gold/45 p-1.5 flex flex-col items-center text-center" title="Anh hùng Lao động thời kỳ đổi mới">
+                                <div class="relative w-11 h-16 sm:w-12 sm:h-18 flex items-center justify-center overflow-hidden shrink-0">
+                                    <svg class="w-full h-full" viewBox="0 0 90 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="18" y="6" width="54" height="28" rx="2" fill="#B91C1C" stroke="#F59E0B" stroke-width="4"/>
+                                        <line x1="45" y1="34" x2="45" y2="52" stroke="#F59E0B" stroke-width="4"/>
+                                        <polygon points="45,50 53,78 82,78 58,95 67,124 45,107 23,124 32,95 8,78 37,78" fill="#F59E0B" stroke="#FEF08A" stroke-width="1.5"/>
+                                    </svg>
+                                    <img src="AH_LDTKDM.jpg" alt="Anh hùng Lao động thời kỳ đổi mới"
+                                         class="vmu-chroma-img absolute inset-0 w-full h-full object-contain emblem-screen-blend"
+                                         onerror="this.style.opacity='0'">
+                                </div>
+                                <div class="mt-1 text-[9px] sm:text-[10px] font-semibold text-vmu-goldlight leading-tight line-clamp-2">
+                                    AH Lao động Đổi mới
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prime Minister Decision 1901/QĐ-TTg Strip Integrated Cleanly Below Banner Row -->
+                <div class="mt-4 pt-3.5 border-t border-white/15 flex flex-col md:flex-row items-start md:items-center gap-3">
+                    <div class="shrink-0 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-vmu-gold/15 border border-vmu-gold/45 text-vmu-gold text-xs font-bold">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                        <span>Quyết định Số: 1901/QĐ-TTg (05/9/2025)</span>
+                    </div>
+                    <blockquote class="text-xs sm:text-sm text-slate-200 italic leading-relaxed">
+                        “Phát triển Trường Đại học Hàng hải Việt Nam thành trung tâm đào tạo chất lượng cao, nghiên cứu khoa học, đổi mới sáng tạo, hợp tác chuyển giao - ứng dụng công nghệ, sản xuất thử nghiệm, trong đó lĩnh vực giao thông vận tải và kinh tế biển đạt trình độ khu vực và thế giới; là một trong những trung tâm đào tạo nguồn nhân lực chất lượng cao thuộc nhóm hàng đầu châu Á trong lĩnh vực hàng hải, kinh tế biển và đại dương”
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- ============================================================= -->
+            <!-- HERO PRODUCT SPOTLIGHT: HỆ THỐNG QUẢN LÝ TÀU BIỂN SSMS         -->
+            <!-- ============================================================= -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-vmu-cyan/35 shadow-glass">
+                <div class="text-center max-w-5xl mx-auto space-y-3 mb-7">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-vmu-cyan/20 border border-vmu-cyan/50 text-vmu-lightcyan text-xs font-bold uppercase tracking-widest">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span>Sản phẩm Khoa học Công nghệ & Chuyển đổi số Tiêu biểu</span>
+                    </div>
+
+                    <h1 class="font-display font-black text-white uppercase tracking-tight hero-product-title">
+                        HỆ THỐNG QUẢN LÝ TÀU BIỂN THÔNG MINH <span class="text-transparent bg-clip-text bg-gradient-to-r from-vmu-lightcyan via-cyan-300 to-vmu-gold">SSMS</span>
+                    </h1>
+
+                    <div class="font-mono text-xs sm:text-sm md:text-base text-vmu-lightcyan font-bold tracking-widest uppercase">
+                        (SMART SHIP MANAGEMENT SYSTEM)
+                    </div>
+
+                    <p class="text-slate-200 text-sm sm:text-base max-w-4xl mx-auto leading-relaxed pt-1">
+                        Hệ thống tái hiện đồng thời môi trường <strong class="text-white">Tàu</strong>, <strong class="text-white">Trung tâm Bờ</strong>, giao diện <strong class="text-white">Thuyền viên</strong> và kết nối <strong class="text-white">Tàu–Bờ</strong>; minh họa quy trình nhập liệu, làm việc <strong class="text-vmu-lightcyan">offline 100%</strong>, lưu hàng đợi (<span class="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">Store-and-Forward</span>) và đồng bộ thông minh (<span class="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">Delta Sync</span>) khi kết nối trở lại.
+                    </p>
+                </div>
+
+                <!-- Research Team & Faculty Attribution Bar -->
+                <div class="rounded-2xl bg-vmu-darkest/85 border border-white/15 p-4 sm:px-6 mb-7 flex flex-col lg:flex-row items-center justify-between gap-4">
+                    <div class="space-y-1 text-center lg:text-left">
+                        <div class="text-[11px] font-bold uppercase tracking-wider text-vmu-lightcyan">
+                            <i class="fa-solid fa-building-columns mr-1.5 text-vmu-gold"></i>Khoa Công nghệ thông tin và Khoa Điện - Điện tử • Trường Đại học Hàng hải Việt Nam
+                        </div>
+                        <div class="text-xs sm:text-sm md:text-base font-bold text-vmu-goldlight flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-1">
+                            <span class="text-white font-semibold">Nhóm phát triển:</span>
+                            <span><i class="fa-solid fa-user-tie text-vmu-cyan mr-1.5"></i>ThS. Phạm Trung Minh</span>
+                            <span><i class="fa-solid fa-user-graduate text-vmu-cyan mr-1.5"></i>PGS.TS. Đinh Anh Tuấn</span>
+                            <span><i class="fa-solid fa-microchip text-vmu-cyan mr-1.5"></i>TS. Đoàn Hữu Khánh</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-center gap-2.5 shrink-0">
+                        <a href="#live-demo" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-vmu-cyan text-vmu-darkest font-bold text-xs sm:text-sm hover:bg-vmu-lightcyan transition shadow-glow-cyan">
+                            <i class="fa-solid fa-display"></i> Trải nghiệm Giao diện Thực tế
+                        </a>
+                        <a href="#thong-so" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm transition">
+                            <i class="fa-solid fa-server text-vmu-gold"></i> Thông số Kỹ thuật
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4 Key Quantitative Breakthrough KPIs -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="rounded-2xl bg-vmu-darkest/80 border border-white/10 border-l-4 border-l-vmu-cyan p-4 flex flex-col justify-between">
+                        <div class="flex items-center justify-between text-xs text-slate-300 font-medium">
+                            <span>Hiệu quả nén gói tin đồng bộ</span>
+                            <i class="fa-solid fa-compress text-vmu-cyan text-base"></i>
+                        </div>
+                        <div class="my-1.5">
+                            <span class="text-3xl font-display font-black text-white">-90%</span>
+                            <span class="text-xs text-vmu-lightcyan font-semibold ml-1">dung lượng</span>
+                        </div>
+                        <div class="text-xs text-slate-300 font-mono">Từ 3.50 MB xuống 0.35 MB/báo cáo</div>
+                    </div>
+
+                    <div class="rounded-2xl bg-vmu-darkest/80 border border-white/10 border-l-4 border-l-emerald-400 p-4 flex flex-col justify-between">
+                        <div class="flex items-center justify-between text-xs text-slate-300 font-medium">
+                            <span>Đồng bộ qua vệ tinh yếu</span>
+                            <i class="fa-solid fa-satellite text-emerald-400 text-base"></i>
+                        </div>
+                        <div class="my-1.5">
+                            <span class="text-3xl font-display font-black text-emerald-400">100%</span>
+                            <span class="text-xs text-emerald-300 font-semibold ml-1">thành công</span>
+                        </div>
+                        <div class="text-xs text-slate-300 font-mono">Mạng ≥ 64 Kbps (>100 chu kỳ ngắt)</div>
+                    </div>
+
+                    <div class="rounded-2xl bg-vmu-darkest/80 border border-white/10 border-l-4 border-l-vmu-gold p-4 flex flex-col justify-between">
+                        <div class="flex items-center justify-between text-xs text-slate-300 font-medium">
+                            <span>Thời gian xử lý truy vấn</span>
+                            <i class="fa-solid fa-bolt text-vmu-gold text-base"></i>
+                        </div>
+                        <div class="my-1.5">
+                            <span class="text-3xl font-display font-black text-vmu-gold">~2.84 ms</span>
+                        </div>
+                        <div class="text-xs text-amber-200 font-mono">Giảm 86% thời gian xử lý truy vấn</div>
+                    </div>
+
+                    <div class="rounded-2xl bg-vmu-darkest/80 border border-white/10 border-l-4 border-l-sky-400 p-4 flex flex-col justify-between">
+                        <div class="flex items-center justify-between text-xs text-slate-300 font-medium">
+                            <span>Tuân thủ chuẩn quốc tế</span>
+                            <i class="fa-solid fa-globe text-sky-400 text-base"></i>
+                        </div>
+                        <div class="my-1.5">
+                            <span class="text-3xl font-display font-black text-white">09</span>
+                            <span class="text-xs text-sky-300 font-semibold ml-1">tiêu chuẩn IMO</span>
+                        </div>
+                        <div class="text-xs text-slate-300 font-mono">SOLAS, MARPOL, ISM, STCW, CII...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. KHỐI 1: BÀI TOÁN THỰC TIỄN & GIẢI PHÁP CÔNG NGHỆ CỐT LÕI           -->
+    <!-- ===================================================================== -->
+    <section id="giai-phap" class="py-20 bg-gradient-to-b from-vmu-darkest via-vmu-navy to-vmu-darkest relative border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-vmu-ocean/40 border border-vmu-cyan/40 text-vmu-lightcyan text-xs font-bold uppercase tracking-widest mb-3">
+                    <i class="fa-solid fa-microscope"></i> Giải pháp Khoa học Công nghệ Đột phá
+                </div>
+                <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-white">
+                    Bài toán Thực tiễn & Giải pháp Công nghệ Cốt lõi SSMS
+                </h2>
+                <p class="mt-3 text-slate-300 text-sm sm:text-base">
+                    Giải quyết triệt để bài toán cô lập dữ liệu giữa Tàu biển hoạt động dài ngày ngoài khơi và Trung tâm quản lý trên Bờ trong điều kiện băng thông vệ tinh cực thấp.
+                </p>
+            </div>
+
+            <!-- Problem vs Solution Comparison -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-14">
+                <!-- Practical Challenge Card -->
+                <div class="rounded-3xl bg-gradient-to-br from-rose-950/50 via-vmu-navy/90 to-vmu-darkest border border-rose-500/30 p-7 sm:p-8 relative overflow-hidden">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-12 h-12 rounded-2xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400">
+                            <i class="fa-solid fa-triangle-exclamation text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-rose-400">Thách thức hiện hữu</div>
+                            <h3 class="text-xl font-bold text-white">Bài toán Thực tiễn Ngoài khơi</h3>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-slate-300 text-sm sm:text-base">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-xmark text-rose-400 mt-1"></i>
+                            <span><strong class="text-white">Kết nối vệ tinh băng thông cực thấp & đắt đỏ:</strong> Tàu biển hoạt động dài ngày ngoài khơi với kết nối vệ tinh (VSAT/Iridium) băng thông cực thấp, chập chờn và chi phí đắt đỏ.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-xmark text-rose-400 mt-1"></i>
+                            <span><strong class="text-white">Phần mềm Web truyền thống bị gián đoạn:</strong> Các phần mềm quản lý Web truyền thống bị gián đoạn ngay khi mất mạng, gây cô lập dữ liệu giữa Tàu và Bờ.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-xmark text-rose-400 mt-1"></i>
+                            <span><strong class="text-white">Xung đột & trễ thông tin điều hành:</strong> Khó đồng bộ tức thời nhật ký hàng hải, lịch bảo trì PMS, kho vật tư và hồ sơ chứng chỉ thuyền viên.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- SSMS Breakthrough Card -->
+                <div class="rounded-3xl bg-gradient-to-br from-emerald-950/40 via-vmu-deep/80 to-vmu-darkest border border-emerald-400/40 p-7 sm:p-8 relative overflow-hidden shadow-glow-cyan">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-emerald-400">
+                            <i class="fa-solid fa-shield-halved text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-emerald-400">Công nghệ lõi SSMS</div>
+                            <h3 class="text-xl font-bold text-white">Kiến trúc Edge-to-Shore Tự chủ & Đồng bộ Thông minh</h3>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-slate-200 text-sm sm:text-base">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong class="text-white">Tại Tàu (Phân hệ độc lập làm Edge Server):</strong> Vận hành độc lập 100% khi mất kết nối Internet. Cho phép ghi 8 loại Logbook chuẩn IMO, lập lịch bảo trì PMS, quản lý kho vật tư và hồ sơ thuyền viên qua mạng LAN/WiFi nội bộ tàu.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong class="text-white">Đồng bộ Thông minh (Store-and-Forward & Delta Sync):</strong> Xếp hàng đợi kèm khóa chống trùng lặp, giảm 90% dung lượng gói tin (3.50 MB xuống 0.35 MB) và tự động giải quyết xung đột theo quyền sở hữu.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong class="text-white">Tại Bờ (Giám sát Đội tàu & Trợ lý AI):</strong> Giám sát GPS đội tàu, quản lý chứng chỉ STCW, nhận Noon Report tự động và tích hợp Trợ lý AI (LLM) hỏi đáp tiếng Việt tự nhiên.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Architecture Flow Diagram (Ship <-> Satellite <-> Shore) -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 mb-14 border border-vmu-cyan/30">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-diagram-project text-vmu-cyan"></i>
+                            Sơ đồ Kiến trúc Luồng Dữ liệu Tàu (Edge Server) ⇄ Vệ tinh ⇄ Trung tâm Bờ (Shore & AI)
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-300">Minh họa cơ chế nén gói tin Delta Sync (-90%), ký số HMAC-SHA256 và hàng đợi ưu tiên Store-and-Forward</p>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-mono">
+                        ● Băng thông tối thiểu: ≥ 64 Kbps (VSAT / Iridium / 4G)
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-11 gap-6 items-center">
+                    <!-- Column 1: Ship Edge Server -->
+                    <div class="lg:col-span-4 rounded-2xl bg-vmu-darkest/90 border border-vmu-lightcyan/30 p-5">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 rounded bg-vmu-ocean text-xs font-bold text-white uppercase">1. PHÂN HỆ TẠI TÀU (EDGE SERVER)</span>
+                            <i class="fa-solid fa-ship text-vmu-lightcyan text-xl"></i>
+                        </div>
+                        <div class="text-sm font-bold text-white mb-2">Máy trạm Station (Docker Compose)</div>
+                        <div class="space-y-2 text-xs text-slate-300">
+                            <div class="p-2 rounded-lg bg-white/5 flex items-center justify-between">
+                                <span><i class="fa-solid fa-book-journal-whills text-vmu-cyan mr-1.5"></i>8 loại Nhật ký điện tử IMO</span>
+                                <span class="font-mono text-emerald-400">Offline 100%</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-white/5 flex items-center justify-between">
+                                <span><i class="fa-solid fa-screwdriver-wrench text-vmu-gold mr-1.5"></i>Bảo trì PMS & Kho vật tư</span>
+                                <span class="font-mono text-vmu-lightcyan">LAN / WiFi Tàu</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-white/5 flex items-center justify-between">
+                                <span><i class="fa-solid fa-database text-sky-400 mr-1.5"></i>PostgreSQL 15 (60+ bảng Edge)</span>
+                                <span class="font-mono text-amber-300">Queue + Lock</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Animated Sync Tunnel -->
+                    <div class="lg:col-span-3 flex flex-col items-center justify-center py-4 relative">
+                        <div class="text-center mb-3">
+                            <span class="px-3 py-1 rounded-full bg-vmu-gold/20 border border-vmu-gold/50 text-vmu-gold text-xs font-bold">
+                                <i class="fa-solid fa-satellite-dish mr-1"></i> VSAT / Iridium (≥64 Kbps)
+                            </span>
+                        </div>
+
+                        <div class="w-full h-14 rounded-2xl bg-vmu-darkest border border-vmu-cyan/40 relative overflow-hidden flex flex-col justify-center px-4">
+                            <div class="text-[11px] font-mono text-center text-vmu-lightcyan z-10">
+                                Delta Sync: 3.50MB ➔ 0.35MB (-90%)
+                            </div>
+                            <div class="text-[10px] font-mono text-center text-slate-400 z-10">
+                                Ký số HMAC-SHA256 • Chống trùng lặp
+                            </div>
+                            <div class="packet-dot-right absolute top-2.5 w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399]"></div>
+                            <div class="packet-dot-left absolute bottom-2.5 w-3 h-3 rounded-full bg-vmu-gold shadow-[0_0_12px_#f59e0b]"></div>
+                        </div>
+
+                        <div class="mt-2 text-[11px] text-slate-300 text-center">
+                            Giải quyết xung đột tự động theo quyền sở hữu
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Shore Center & AI -->
+                    <div class="lg:col-span-4 rounded-2xl bg-vmu-darkest/90 border border-vmu-gold/40 p-5">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 rounded bg-amber-500 text-vmu-darkest text-xs font-bold uppercase">3. TRUNG TÂM BỜ (SHORE & AI)</span>
+                            <i class="fa-solid fa-tower-observation text-vmu-gold text-xl"></i>
+                        </div>
+                        <div class="text-sm font-bold text-white mb-2">Điều hành Đội tàu & Trợ lý AI (LLM)</div>
+                        <div class="space-y-2 text-xs text-slate-300">
+                            <div class="p-2 rounded-lg bg-white/5 flex items-center justify-between">
+                                <span><i class="fa-solid fa-map-location-dot text-emerald-400 mr-1.5"></i>Giám sát GPS & Noon Report</span>
+                                <span class="font-mono text-emerald-400">Realtime</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-white/5 flex items-center justify-between">
+                                <span><i class="fa-solid fa-id-card-clip text-vmu-cyan mr-1.5"></i>Quản lý Thuyền viên & STCW</span>
+                                <span class="font-mono text-vmu-lightcyan">110+ bảng Shore</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-white/5 flex items-center justify-between">
+                                <span><i class="fa-solid fa-robot text-vmu-gold mr-1.5"></i>Trợ lý Gemini AI Tiếng Việt</span>
+                                <span class="font-mono text-vmu-gold">Hỏi đáp tự nhiên</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 Core Pillars Detail Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel rounded-2xl p-6 hover:border-vmu-cyan transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-11 h-11 rounded-xl bg-vmu-ocean/50 border border-vmu-cyan/40 flex items-center justify-center text-vmu-lightcyan font-bold mb-4">
+                            01
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Tại Tàu: Phân hệ Độc lập Edge Server</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Triển khai trực tiếp trên máy Station đặt trên tàu, vận hành độc lập 100% khi mất kết nối Internet. Cho phép ghi nhật ký hàng hải điện tử (<strong class="text-white">8 loại Logbook chuẩn IMO</strong>), lập lịch bảo trì PMS, quản lý kho vật tư và hồ sơ thuyền viên qua mạng LAN/WiFi nội bộ tàu.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/10 text-xs font-mono text-vmu-lightcyan">
+                        ● 60+ Bảng dữ liệu Edge • Flutter Mobile & Web
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 hover:border-vmu-gold transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-11 h-11 rounded-xl bg-amber-500/20 border border-vmu-gold/50 flex items-center justify-center text-vmu-gold font-bold mb-4">
+                            02
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Đồng bộ Thông minh Store-and-Forward & Delta Sync</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Mọi thay đổi trên Phân hệ tại tàu được xếp vào hàng đợi kèm <strong class="text-white">khóa chống trùng lặp</strong> và tự động đồng bộ hai chiều về bờ khi có sóng theo mức ưu tiên. Tự động giải quyết xung đột dữ liệu theo quyền sở hữu.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/10 text-xs font-mono text-vmu-gold">
+                        ● Giảm 90% dung lượng • Ký số HMAC-SHA256
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 hover:border-emerald-400 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-11 h-11 rounded-xl bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-emerald-400 font-bold mb-4">
+                            03
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Tại Bờ: Giám sát Đội tàu & Trợ lý AI Tiếng Việt</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Giám sát vị trí GPS đội tàu, quản lý thuyền viên/chứng chỉ STCW, nhận báo cáo Noon Report tự động và tích hợp <strong class="text-white">Trợ lý AI (LLM)</strong> hỏi đáp tình trạng tàu bằng tiếng Việt tự nhiên.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/10 text-xs font-mono text-emerald-400">
+                        ● 110+ Bảng Shore • Truy vấn siêu tốc ~2.84 ms
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. KHỐI 2: TRẢI NGHIỆM TRỰC QUAN HỆ THỐNG GIAO DIỆN SSMS THỰC TẾ      -->
+    <!-- ===================================================================== -->
+    <section id="live-demo" class="py-20 bg-vmu-darkest relative border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-bold uppercase tracking-widest mb-3">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        Giao diện Thực tế của Hệ thống SSMS
+                    </div>
+                    <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-white">
+                        Trải nghiệm Trực quan Hệ thống Giao diện SSMS Thực tế
+                    </h2>
+                    <p class="mt-2 text-slate-300 text-sm sm:text-base max-w-3xl">
+                        Khám phá trực tiếp 3 phân hệ phần mềm của SSMS: <strong class="text-white">Giao diện Điều hành Đồng bộ Tàu – Bờ (Shore)</strong>, <strong class="text-white">Giao diện Nhật ký Boong - SOLAS Chapter V trên máy Station Tàu (Edge)</strong> và <strong class="text-white">Trợ lý AI (LLM) Hỏi đáp Tiếng Việt</strong>.
+                    </p>
+                </div>
+
+                <!-- Global Satellite Connection Switcher -->
+                <div class="glass-panel rounded-2xl p-4 border border-vmu-cyan/40 flex items-center gap-4 shrink-0">
+                    <div>
+                        <div class="text-[11px] uppercase tracking-wider text-slate-300 font-semibold">Trạng thái Kết nối Vệ tinh Tàu – Bờ</div>
+                        <div id="globalNetStatusLabel" class="text-sm font-bold text-emerald-400 flex items-center gap-1.5 mt-0.5">
+                            <span id="globalNetDot" class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                            <span>VSAT/Iridium 64 Kbps: TRỰC TUYẾN</span>
+                        </div>
+                    </div>
+                    <button id="toggleSatBtn" onclick="toggleSatelliteNetwork()" class="px-4 py-2.5 rounded-xl bg-rose-500/20 border border-rose-400/50 text-rose-300 hover:bg-rose-500 hover:text-white font-bold text-xs transition">
+                        <i class="fa-solid fa-wifi-slash mr-1"></i> Giả lập Mất sóng (Offline)
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3 Interface Switcher Tabs (Shore -> Edge -> AI) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <button onclick="switchDemoTab('shore')" id="tabBtn-shore" class="p-4 rounded-2xl text-left transition-all border-2 border-vmu-cyan bg-vmu-ocean/30 shadow-glow-cyan flex items-start gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-vmu-cyan text-vmu-darkest font-display font-black flex items-center justify-center shrink-0">1</div>
+                    <div class="flex-1">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-vmu-gold">Giao diện 1 • Trung tâm Bờ (Shore)</span>
+                            <span id="queueBadgeTab" class="px-2 py-0.5 rounded-full bg-amber-500 text-vmu-darkest font-mono font-bold text-[11px]">Hàng chờ: 3</span>
+                        </div>
+                        <div class="text-base font-bold text-white mt-0.5">Điều hành Đồng bộ Tàu – Bờ</div>
+                        <div class="text-xs text-slate-300 mt-1">Quản lý hàng đợi, nhật ký đồng bộ Delta Sync & giải quyết xung đột.</div>
+                    </div>
+                </button>
+
+                <button onclick="switchDemoTab('edge')" id="tabBtn-edge" class="p-4 rounded-2xl text-left transition-all border border-white/15 bg-vmu-navy/60 hover:bg-vmu-navy flex items-start gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-white/10 text-white font-display font-black flex items-center justify-center shrink-0">2</div>
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-vmu-lightcyan">Giao diện 2 • Máy Station Tàu (Edge)</div>
+                        <div class="text-base font-bold text-white mt-0.5">Nhật ký Boong - SOLAS Chapter V</div>
+                        <div class="text-xs text-slate-300 mt-1">Nhập liệu hành trình, ký số Thuyền trưởng & hoạt động Offline 100%.</div>
+                    </div>
+                </button>
+
+                <button onclick="switchDemoTab('ai')" id="tabBtn-ai" class="p-4 rounded-2xl text-left transition-all border border-white/15 bg-vmu-navy/60 hover:bg-vmu-navy flex items-start gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-white/10 text-white font-display font-black flex items-center justify-center shrink-0">3</div>
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-emerald-400">Giao diện 3 • Trung tâm Bờ (AI LLM)</div>
+                        <div class="text-base font-bold text-white mt-0.5">Giám sát Đội tàu & Trợ lý AI</div>
+                        <div class="text-xs text-slate-300 mt-1">Hỏi đáp trực tiếp bằng tiếng Việt tự nhiên về tình trạng tàu BIENDONG STAR.</div>
+                    </div>
+                </button>
+            </div>
+
+            <!-- =============================================================== -->
+            <!-- GIAO DIỆN 1: HÌNH 1 - ĐIỀU HÀNH ĐỒNG BỘ TÀU – BỜ (SHORE)         -->
+            <!-- =============================================================== -->
+            <div id="demoPanel-shore" class="rounded-3xl overflow-hidden border-2 border-vmu-gold/50 shadow-2xl bg-[#f4f6fa] text-slate-800">
+                <div class="bg-[#0b2447] text-white px-5 py-3 flex flex-wrap items-center justify-between gap-4 text-xs">
+                    <div class="flex items-center gap-5 flex-wrap">
+                        <div class="flex items-center gap-2 font-display font-black text-sm tracking-wider text-white">
+                            <i class="fa-solid fa-anchor text-sky-400"></i> MARITIME
+                        </div>
+                        <span class="text-slate-300 hover:text-white cursor-pointer">Danh mục <i class="fa-solid fa-chevron-down text-[9px] ml-0.5"></i></span>
+                        <span class="text-slate-300 hover:text-white cursor-pointer">Danh sách tàu</span>
+                        <span class="text-slate-300 hover:text-white cursor-pointer"><i class="fa-solid fa-satellite mr-1 text-sky-400"></i>Tracking</span>
+                        <span class="text-slate-300 hover:text-white cursor-pointer">Tối ưu tuyến</span>
+                        <span class="text-slate-300 hover:text-white cursor-pointer">Duyệt xuống tàu</span>
+                        <span class="text-slate-300 hover:text-white cursor-pointer">Báo cáo</span>
+                        <span class="text-slate-300 hover:text-white cursor-pointer"><i class="fa-solid fa-shield-halved mr-1 text-sky-400"></i>SMS System</span>
+                        <span class="px-3 py-1.5 bg-white/10 border-b-2 border-amber-400 text-white font-bold rounded-t">Đồng bộ</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-regular fa-bell text-slate-300"></i>
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center">A</div>
+                            <div class="leading-none">
+                                <div class="font-bold text-xs">admin</div>
+                                <div class="text-[9px] text-slate-300">ADMIN</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 space-y-5">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200 flex items-center justify-center text-slate-700">
+                                <i class="fa-solid fa-database text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-800">Điều hành đồng bộ</h3>
+                                <p id="shoreLastUpdated" class="text-xs text-slate-500">Bờ ↔ Đội tàu • Cập nhật: 08:00:00 6/10/2026</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2.5 text-xs">
+                            <label class="inline-flex items-center gap-1.5 text-slate-600 font-medium">
+                                <input type="checkbox" checked class="rounded text-blue-600"> Tự làm mới
+                            </label>
+                            <select class="px-2.5 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-700">
+                                <option>15s</option>
+                                <option>30s</option>
+                            </select>
+                            <button onclick="triggerManualDeltaSync()" class="px-3.5 py-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-semibold flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-arrows-rotate text-blue-600"></i> Làm mới
+                            </button>
+                            <button onclick="createShoreOutboundQueue()" class="px-4 py-2 rounded-lg bg-[#0b2447] hover:bg-blue-900 text-white font-semibold flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-paper-plane"></i> Tạo hàng chờ gửi xuống
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 4 KPI Cards Matching Hình 1 -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-white rounded-xl border border-slate-200 p-4 flex items-center gap-3.5 shadow-sm">
+                            <div class="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700">
+                                <i class="fa-solid fa-ship"></i>
+                            </div>
+                            <div>
+                                <div id="kpiConnectedShips" class="text-xl font-extrabold text-slate-800">1/1</div>
+                                <div class="text-xs text-slate-500">Tàu đang kết nối</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl border border-slate-200 p-4 flex items-center gap-3.5 shadow-sm">
+                            <div class="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700">
+                                <i class="fa-solid fa-inbox"></i>
+                            </div>
+                            <div>
+                                <div id="kpiQueueCount" class="text-xl font-extrabold text-slate-800">3</div>
+                                <div class="text-xs text-slate-500">Bản ghi bờ đang chờ gửi</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl border border-slate-200 p-4 flex items-center gap-3.5 shadow-sm">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                <i class="fa-regular fa-circle-check"></i>
+                            </div>
+                            <div>
+                                <div id="kpiSuccessCount" class="text-xl font-extrabold text-slate-800">20</div>
+                                <div class="text-xs text-slate-500">Thành công theo bộ lọc</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl border border-slate-200 p-4 flex items-center gap-3.5 shadow-sm">
+                            <div class="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <div>
+                                <div id="kpiConflictCount" class="text-xl font-extrabold text-slate-800">10 / 0</div>
+                                <div class="text-xs text-slate-500">Xung đột / Lỗi theo bộ lọc</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                        <!-- Main Log Table -->
+                        <div class="lg:col-span-9 bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                            <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100 mb-4">
+                                <div class="flex items-center gap-2 text-xs">
+                                    <span class="px-3 py-1.5 rounded-lg bg-slate-100 font-bold text-slate-800"><i class="fa-solid fa-wave-square mr-1 text-blue-600"></i>Nhật ký</span>
+                                    <span class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-50 cursor-pointer" onclick="triggerManualDeltaSync()">
+                                        <i class="fa-solid fa-box-archive mr-1"></i>Hàng chờ (<span id="tabQueueInline">3</span>)
+                                    </span>
+                                </div>
+                                <button onclick="showRecordDetailModal('CSV Export', 'Đã xuất danh sách đồng bộ Tàu BIENDONG STAR chuẩn định dạng kiểm toán IMO.')" class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-slate-600 hover:bg-slate-50">
+                                    <i class="fa-solid fa-download mr-1"></i> CSV trang này
+                                </button>
+                            </div>
+
+                            <!-- Filter Controls matching Hình 1 -->
+                            <div class="grid grid-cols-2 sm:grid-cols-6 gap-2.5 mb-3 text-xs">
+                                <div>
+                                    <label class="block text-slate-500 mb-1">Tàu / nguồn</label>
+                                    <select class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-700">
+                                        <option>Tất cả nguồn</option>
+                                        <option>BIENDONG STAR</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-slate-500 mb-1">Trạng thái</label>
+                                    <select id="shoreFilterStatus" onchange="filterShoreSyncTable()" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-700">
+                                        <option value="ALL">Tất cả</option>
+                                        <option value="SUCCESS">Thành công</option>
+                                        <option value="CONFLICT">Xung đột</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-slate-500 mb-1">Hướng</label>
+                                    <select class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-700">
+                                        <option>Cả hai hướng</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-slate-500 mb-1">Bảng dữ liệu</label>
+                                    <input type="text" placeholder="VD: crew_certificate" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-700">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-500 mb-1">Từ thời điểm</label>
+                                    <input type="text" placeholder="mm/dd/yyyy --:-- --" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-700">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-500 mb-1">Đến thời điểm</label>
+                                    <input type="text" placeholder="mm/dd/yyyy --:-- --" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-700">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 mb-3 text-xs items-end">
+                                <div class="sm:col-span-7">
+                                    <label class="block text-slate-500 mb-1">Tìm bản ghi</label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400"></i>
+                                        <input type="text" placeholder="ID, nguồn, bảng hoặc nội dung lỗi..." class="w-full pl-8 pr-3 py-1.5 rounded-lg border border-slate-200 text-slate-700">
+                                    </div>
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <button onclick="document.getElementById('shoreFilterStatus').value='ALL'; filterShoreSyncTable();" class="w-full py-1.5 px-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-600 font-medium">
+                                        Xóa bộ lọc
+                                    </button>
+                                </div>
+                                <div class="sm:col-span-3">
+                                    <label class="block text-slate-500 mb-1">Số dòng</label>
+                                    <select class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-700">
+                                        <option>25</option>
+                                        <option>50</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <p class="text-[11px] text-slate-400 mb-3">
+                                Bấm "Chi tiết" để xem đầy đủ ID và nội dung xử lý. Xung đột được thống kê riêng với lỗi. Bộ lọc tàu sử dụng nguồn ghi trong nhật ký.
+                            </p>
+
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse text-xs">
+                                    <thead>
+                                        <tr class="border-b border-slate-200 text-slate-500 font-semibold">
+                                            <th class="py-2.5 px-2">Hướng</th>
+                                            <th class="py-2.5 px-2">Nguồn</th>
+                                            <th class="py-2.5 px-2">Loại dữ liệu</th>
+                                            <th class="py-2.5 px-2">Thao tác</th>
+                                            <th class="py-2.5 px-2">ID bản ghi</th>
+                                            <th class="py-2.5 px-2">Trạng thái</th>
+                                            <th class="py-2.5 px-2">Thời gian</th>
+                                            <th class="py-2.5 px-2 text-right"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="shoreSyncTableBody" class="divide-y divide-slate-100 text-slate-700">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Right Sidebar matching Hình 1 -->
+                        <div class="lg:col-span-3 space-y-4">
+                            <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+                                <div class="flex items-center justify-between text-xs font-bold text-slate-700 mb-3">
+                                    <span><i class="fa-solid fa-ship mr-1.5 text-slate-500"></i>Đội tàu</span>
+                                    <span class="text-slate-400 font-normal">1 tàu</span>
+                                </div>
+                                <div class="p-3 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+                                    <div>
+                                        <div class="font-bold text-xs text-slate-800">BIENDONG STAR</div>
+                                        <div id="shoreShipSubStatus" class="text-[11px] text-slate-500 flex items-center gap-1.5 mt-0.5">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                            <span>Shore_WiFi • Online</span>
+                                        </div>
+                                    </div>
+                                    <span id="shoreShipBadge" class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[11px]">Ổn định</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+                                <div class="text-xs font-bold text-slate-700 mb-3">
+                                    <i class="fa-solid fa-inbox mr-1.5 text-slate-500"></i>Phân bổ hàng chờ
+                                </div>
+                                <div class="flex items-center justify-between text-xs py-1">
+                                    <div>
+                                        <div class="font-semibold text-slate-700">CC chức danh</div>
+                                        <div class="text-[11px] text-slate-400">Mọi tàu • Từ 08:00:00 6/10/2026</div>
+                                    </div>
+                                    <span id="shoreSidebarQueueNum" class="font-extrabold text-sm text-slate-800">3</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm space-y-2.5">
+                                <div class="text-xs font-bold text-slate-700 mb-1">
+                                    <i class="fa-solid fa-gear mr-1.5 text-slate-500"></i>Kiểm tra dữ liệu
+                                </div>
+                                <button onclick="verifyShoreDataIntegrity()" class="w-full py-2 px-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-xs font-semibold text-slate-700 flex items-center justify-center gap-1.5">
+                                    <i class="fa-solid fa-wave-square text-blue-600"></i> Kiểm tra dữ liệu bờ
+                                </button>
+                                <button onclick="triggerManualDeltaSync()" class="w-full py-2 px-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-xs font-semibold text-slate-700 flex items-center justify-center gap-1.5">
+                                    <i class="fa-solid fa-rotate text-emerald-600"></i> Đưa dữ liệu chưa đồng bộ vào hàng chờ
+                                </button>
+                                <p class="text-[11px] text-slate-400 leading-relaxed">
+                                    Áp dụng cho thuyền viên và chứng chỉ tại bờ. Chu kỳ làm mới chỉ cập nhật màn hình.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =============================================================== -->
+            <!-- GIAO DIỆN 2: HÌNH 2 - NHẬT KÝ BOONG TRÊN MÁY STATION TÀU (EDGE) -->
+            <!-- =============================================================== -->
+            <div id="demoPanel-edge" class="hidden rounded-3xl overflow-hidden border-2 border-vmu-lightcyan/40 shadow-2xl bg-[#f4f6fa] text-slate-800">
+                <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[600px]">
+                    <!-- Left Sidebar matching Hình 2 -->
+                    <div class="lg:col-span-3 bg-white border-r border-slate-200 p-4 flex flex-col justify-between select-none">
+                        <div>
+                            <div class="flex items-center gap-2.5 px-2 pb-4 mb-3 border-b border-slate-100">
+                                <i class="fa-solid fa-anchor text-blue-600 text-xl"></i>
+                                <span class="font-bold text-slate-800 text-base">Bảng điều khiển</span>
+                            </div>
+
+                            <ul class="space-y-1 text-xs sm:text-sm text-slate-600 font-medium">
+                                <li class="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center gap-2.5 cursor-pointer">
+                                    <i class="fa-solid fa-table-columns w-4 text-slate-400"></i> Bảng điều khiển
+                                </li>
+                                <li class="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center gap-2.5 cursor-pointer">
+                                    <i class="fa-regular fa-compass w-4 text-slate-400"></i> Hàng hải
+                                </li>
+                                <li class="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center gap-2.5 cursor-pointer">
+                                    <i class="fa-solid fa-ship w-4 text-slate-400"></i> Dữ liệu tàu
+                                </li>
+                                <li class="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center justify-between cursor-pointer">
+                                    <span class="flex items-center gap-2.5"><i class="fa-solid fa-users w-4 text-slate-400"></i> Quản lý thuyền viên</span>
+                                    <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+                                </li>
+                                <li class="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center justify-between cursor-pointer">
+                                    <span class="flex items-center gap-2.5"><i class="fa-solid fa-dharmachakra w-4 text-slate-400"></i> Quản lý khai thác</span>
+                                    <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+                                </li>
+                                <li class="px-3 py-2 rounded-lg text-slate-700 flex items-center justify-between cursor-pointer">
+                                    <span class="flex items-center gap-2.5"><i class="fa-regular fa-calendar-check w-4 text-slate-500"></i> Kế hoạch bảo trì</span>
+                                    <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                                </li>
+                                <li class="pl-8 pr-3 py-1.5 text-xs text-slate-500 hover:text-slate-800 flex items-center justify-between">
+                                    <span><i class="fa-regular fa-folder mr-2"></i>Danh mục</span>
+                                    <i class="fa-solid fa-chevron-right text-[9px]"></i>
+                                </li>
+                                <li class="pl-8 pr-3 py-1.5 text-xs text-slate-500 hover:text-slate-800 flex items-center justify-between">
+                                    <span><i class="fa-solid fa-warehouse mr-2"></i>Kho vận</span>
+                                    <i class="fa-solid fa-chevron-right text-[9px]"></i>
+                                </li>
+                                <li class="pl-8 pr-3 py-1.5 text-xs text-slate-500 hover:text-slate-800">
+                                    <i class="fa-solid fa-list-check mr-2"></i>Danh sách công việc
+                                </li>
+                                <li class="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center gap-2.5 cursor-pointer">
+                                    <i class="fa-solid fa-shield-halved w-4 text-slate-400"></i> Quản lý tài liệu và tuân...
+                                </li>
+                                <li class="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center justify-between cursor-pointer">
+                                    <span class="flex items-center gap-2.5"><i class="fa-solid fa-life-ring w-4 text-slate-400"></i> An toàn & Diễn tập</span>
+                                    <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+                                </li>
+                                <li class="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center gap-2.5 cursor-pointer">
+                                    <i class="fa-solid fa-shield-virus w-4 text-slate-400"></i> Nhật ký kiểm toán
+                                </li>
+                                <li class="px-3 py-2 rounded-lg hover:bg-slate-100 flex items-center gap-2.5 cursor-pointer" onclick="switchDemoTab('shore')">
+                                    <i class="fa-solid fa-rotate w-4 text-blue-600"></i> Trạng thái đồng bộ
+                                </li>
+
+                                <li class="mt-2 px-3 py-2.5 rounded-lg bg-blue-600 text-white font-semibold flex items-center justify-between shadow-sm">
+                                    <span class="flex items-center gap-2.5"><i class="fa-regular fa-file-lines w-4"></i> Nhật ký</span>
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                                </li>
+                                <div class="pl-4 border-l-2 border-blue-200 ml-4 space-y-1 mt-1">
+                                    <div class="px-3 py-1.5 rounded-lg text-xs text-slate-600 hover:bg-slate-100 cursor-pointer flex items-center gap-2">
+                                        <i class="fa-solid fa-location-dot text-slate-400"></i> Nhật ký hành trình
+                                    </div>
+                                    <div class="px-3 py-2 rounded-lg text-xs bg-blue-500 text-white font-semibold flex items-center gap-2 shadow-sm">
+                                        <i class="fa-regular fa-compass"></i> Nhật ký boong
+                                    </div>
+                                    <div class="px-3 py-1.5 rounded-lg text-xs text-slate-600 hover:bg-slate-100 cursor-pointer flex items-center gap-2">
+                                        <i class="fa-solid fa-book-open text-slate-400"></i> Nhật ký máy
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-100 text-xs text-slate-400 flex items-center gap-2">
+                            <i class="fa-solid fa-angles-left"></i> Collapse
+                        </div>
+                    </div>
+
+                    <!-- Right Content Area of Edge UI matching Hình 2 -->
+                    <div class="lg:col-span-9 flex flex-col">
+                        <div class="bg-white border-b border-slate-200 px-6 py-3 flex flex-wrap items-center justify-between gap-4">
+                            <div class="font-bold text-slate-800 text-base">Vận hành tàu</div>
+                            <div class="flex items-center gap-4 text-xs">
+                                <button onclick="toggleSatelliteNetwork()" id="edgeTopConnBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold cursor-pointer">
+                                    <i class="fa-solid fa-wifi text-emerald-500"></i> Trực tuyến
+                                </button>
+                                <i class="fa-solid fa-gear text-slate-400"></i>
+                                <i class="fa-regular fa-bell text-slate-400"></i>
+                                <span class="text-slate-500 font-mono">06 Oct 2026 11:24</span>
+                                <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+                                    <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center">P</div>
+                                    <div class="leading-tight">
+                                        <div class="font-bold text-slate-700">Preview</div>
+                                        <div class="text-[10px] text-slate-400 uppercase">ADMIN</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/60 border-b border-slate-200 px-6 py-2.5 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-slate-700">Nhật ký Boong - SOLAS Chapter V</span>
+                            <span id="edgeLocalQueueNotice" class="text-xs font-mono text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">
+                                Hàng đợi Store-and-Forward tại tàu: 3 bản ghi
+                            </span>
+                        </div>
+
+                        <div class="p-6 grid grid-cols-1 xl:grid-cols-12 gap-6 flex-1 bg-[#f8fafc]">
+                            <!-- Column A: Thêm mới Form -->
+                            <div class="xl:col-span-5 bg-white rounded-xl border border-slate-200 p-5 shadow-sm h-fit">
+                                <div class="bg-blue-50/70 text-slate-800 font-bold text-xs px-3.5 py-2.5 rounded-lg mb-4">
+                                    Thêm mới
+                                </div>
+
+                                <form id="deckLogForm" onsubmit="addDeckLogEntry(event)" class="space-y-3.5 text-xs">
+                                    <div>
+                                        <label class="block text-slate-600 font-medium mb-1">Ngày & Giờ (UTC)</label>
+                                        <input id="logDateTime" type="text" value="10/06/2026 04:24 AM" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-600">
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div>
+                                            <label class="block text-slate-600 font-medium mb-1">Ca trực</label>
+                                            <input id="logWatch" type="text" value="00-04" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-600">
+                                        </div>
+                                        <div>
+                                            <label class="block text-slate-600 font-medium mb-1">Sĩ quan trực</label>
+                                            <input id="logOfficer" type="text" value="Chief Officer" placeholder="Officer Name" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-600">
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div>
+                                            <label class="block text-slate-600 font-medium mb-1">Vĩ độ</label>
+                                            <input id="logLat" type="text" value="20.8300" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-600">
+                                        </div>
+                                        <div>
+                                            <label class="block text-slate-600 font-medium mb-1">Kinh độ</label>
+                                            <input id="logLon" type="text" value="106.7500" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-600">
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div>
+                                            <label class="block text-slate-600 font-medium mb-1">Hướng đi (COG)</label>
+                                            <input id="logCog" type="text" value="120" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-600">
+                                        </div>
+                                        <div>
+                                            <label class="block text-slate-600 font-medium mb-1">Tốc độ (SOG)</label>
+                                            <input id="logSog" type="text" value="12.5" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-600">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-slate-600 font-medium mb-1">Mô tả</label>
+                                        <input id="logDesc" type="text" value="Noon position report..." placeholder="Noon position report..." class="w-full px-3 py-2 rounded-lg border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-600">
+                                    </div>
+
+                                    <button type="submit" class="w-full py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold shadow transition">
+                                        Thêm bản ghi
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Column B: Deck Log Entries List matching Hình 2 -->
+                            <div id="deckLogListContainer" class="xl:col-span-7 space-y-4">
+                                <div id="draftCardDemo" class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span class="text-blue-600 font-bold text-sm">10/6/2026, 10:00:00 AM</span>
+                                        <span id="draftStatusBadge" class="px-2.5 py-1 rounded bg-amber-100 text-amber-800 font-bold text-[11px] uppercase">BẢN NHÁP</span>
+                                    </div>
+
+                                    <div class="grid grid-cols-3 gap-2 text-xs text-slate-600 mb-2">
+                                        <div>POS: <strong class="text-slate-800">20.8300, 106.7500</strong></div>
+                                        <div>COG: <strong class="text-slate-800">120°</strong></div>
+                                        <div>SOG: <strong class="text-slate-800">12.5 kts</strong></div>
+                                    </div>
+                                    <div class="text-xs text-slate-600 pb-3 border-b border-slate-100">
+                                        OOW: <strong class="text-slate-800">Chief Officer</strong> | Ca trực: <strong class="text-slate-800">00-04</strong>
+                                    </div>
+
+                                    <div class="py-3 text-xs text-slate-700 border-b border-slate-100">
+                                        Routine watch completed
+                                    </div>
+
+                                    <div id="masterSignControls" class="mt-3">
+                                        <label class="block text-xs font-semibold text-slate-700 mb-1.5">Ký</label>
+                                        <div class="flex items-center gap-2">
+                                            <input id="masterNameInput" type="text" value="Capt. Nguyễn Văn Hải" placeholder="Enter master's name" class="flex-1 px-3 py-2 rounded-lg border border-slate-300 text-xs text-slate-800">
+                                            <button onclick="signDraftLog()" class="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition">
+                                                Sign
+                                            </button>
+                                        </div>
+                                        <div class="mt-2 text-[11px] text-amber-600 flex items-center gap-1 cursor-pointer">
+                                            <i class="fa-solid fa-pen"></i> Sửa
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span class="text-blue-600 font-bold text-sm">10/6/2026, 10:00:00 AM</span>
+                                        <span class="px-2.5 py-1 rounded bg-emerald-100 text-emerald-700 font-bold text-[11px]">Đã ký</span>
+                                    </div>
+
+                                    <div class="grid grid-cols-3 gap-2 text-xs text-slate-600 mb-2">
+                                        <div>POS: <strong class="text-slate-800">20.8300, 106.7500</strong></div>
+                                        <div>COG: <strong class="text-slate-800">120°</strong></div>
+                                        <div>SOG: <strong class="text-slate-800">12.5 kts</strong></div>
+                                    </div>
+                                    <div class="text-xs text-slate-600 pb-3 border-b border-slate-100">
+                                        OOW: <strong class="text-slate-800">Chief Officer</strong> | Ca trực: <strong class="text-slate-800">00-04</strong>
+                                    </div>
+
+                                    <div class="pt-3 text-xs text-slate-700 flex items-center justify-between">
+                                        <span>Routine watch completed</span>
+                                        <span class="font-mono text-[10px] text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">HMAC-SHA256 Verified</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =============================================================== -->
+            <!-- GIAO DIỆN 3: GIÁM SÁT ĐỘI TÀU & HỎI ĐÁP TRỢ LÝ AI TẠI BỜ        -->
+            <!-- =============================================================== -->
+            <div id="demoPanel-ai" class="hidden rounded-3xl overflow-hidden border-2 border-emerald-400/50 shadow-2xl glass-panel p-6 sm:p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                    <div class="lg:col-span-5 rounded-2xl bg-vmu-darkest/90 border border-white/15 p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold">
+                                    ● DỮ LIỆU ĐỒNG BỘ TỨC THỜI TỪ TÀU
+                                </span>
+                                <span class="font-mono text-xs text-vmu-lightcyan">IMO: 9845120</span>
+                            </div>
+
+                            <h3 class="text-xl font-bold text-white mb-1">Tàu M/V BIENDONG STAR</h3>
+                            <p class="text-xs text-slate-300 mb-4">Vị trí mới nhất từ Nhật ký Boong: <span id="aiTelemetryPos" class="font-mono text-vmu-gold">20.8300°N, 106.7500°E (COG 120°, SOG 12.5 kts)</span></p>
+
+                            <div class="space-y-3 text-xs">
+                                <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                                    <div class="flex justify-between text-slate-300 mb-1">
+                                        <span>Nhiên liệu tồn kho (ROB - VLSFO / MGO)</span>
+                                        <span class="text-emerald-400 font-bold">Ổn định</span>
+                                    </div>
+                                    <div class="font-mono text-sm text-white font-bold">VLSFO: 412.5 MT | MGO: 68.2 MT</div>
+                                    <div class="text-[11px] text-slate-400 mt-0.5">Tiêu thụ 24h qua: 18.4 MT/ngày (Đạt chuẩn IMO CII Hạng A)</div>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                                    <div class="flex justify-between text-slate-300 mb-1">
+                                        <span>Tình trạng Máy chính & Kế hoạch bảo trì (PMS)</span>
+                                        <span class="text-vmu-lightcyan font-bold">100% Đúng hạn</span>
+                                    </div>
+                                    <div class="font-mono text-sm text-white font-bold">MAN B&W 6S50ME-C • Nhiệt độ khí xả: 345°C</div>
+                                    <div class="text-[11px] text-slate-400 mt-0.5">0 công việc quá hạn • Đã đồng bộ báo cáo bảo trì từ tàu</div>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                                    <div class="flex justify-between text-slate-300 mb-1">
+                                        <span>Thuyền viên & Chứng chỉ quốc tế STCW / MLC 2006</span>
+                                        <span class="text-vmu-gold font-bold">22/22 Hợp lệ</span>
+                                    </div>
+                                    <div class="font-mono text-sm text-white font-bold">Thuyền trưởng: Capt. Nguyễn Văn Hải</div>
+                                    <div class="text-[11px] text-slate-400 mt-0.5">Toàn bộ chứng chỉ STCW còn hạn > 180 ngày</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-4 border-t border-white/10 text-xs text-slate-400 flex items-center justify-between">
+                            <span>Model: Gemini AI (LLM) • Trường Đại học Hàng hải Việt Nam</span>
+                            <span class="text-emerald-400 font-mono">Query: ~2.84 ms</span>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 rounded-2xl bg-vmu-darkest/95 border border-vmu-cyan/40 flex flex-col h-[520px]">
+                        <div class="p-4 border-b border-white/10 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-vmu-cyan to-blue-600 flex items-center justify-center text-vmu-darkest font-bold shadow-glow-cyan">
+                                    <i class="fa-solid fa-robot text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-white text-sm">Trợ lý AI Điều hành Đội tàu SSMS (Gemini LLM)</div>
+                                    <div class="text-xs text-emerald-400">Hỏi đáp trực tiếp bằng tiếng Việt tự nhiên về tình trạng đội tàu</div>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded bg-white/10 text-[11px] font-mono text-vmu-lightcyan">AI Assistant</span>
+                        </div>
+
+                        <div id="aiChatMessages" class="flex-1 p-4 overflow-y-auto space-y-3.5 text-sm">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-vmu-cyan/20 border border-vmu-cyan text-vmu-lightcyan flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-robot text-xs"></i>
+                                </div>
+                                <div class="rounded-2xl rounded-tl-none bg-vmu-navy/90 border border-white/10 p-3.5 text-slate-200 text-xs sm:text-sm leading-relaxed">
+                                    Xin chào Quý đại biểu tham dự <strong class="text-vmu-gold">Triển lãm thành tựu khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số ngành Xây dựng năm 2026</strong>! Tôi là Trợ lý AI của Hệ thống quản lý tàu biển thông minh SSMS do <strong class="text-white">Trường Đại học Hàng hải Việt Nam</strong> nghiên cứu phát triển. Quý vị có thể chọn câu hỏi gợi ý bên dưới hoặc nhập câu hỏi bằng tiếng Việt để tra cứu tình trạng tàu <strong class="text-white">BIENDONG STAR</strong>!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-4 py-2 border-t border-white/10 bg-vmu-navy/50 flex items-center gap-2 overflow-x-auto no-scrollbar">
+                            <button onclick="askAiAssistant('Tình trạng nhiên liệu dầu và chỉ số CII của tàu BIENDONG STAR hiện tại thế nào?')" class="px-3 py-1.5 rounded-full bg-vmu-ocean/50 hover:bg-vmu-cyan hover:text-vmu-darkest border border-vmu-cyan/40 text-xs text-vmu-lightcyan whitespace-nowrap transition">
+                                ⛽ Hỏi tình trạng dầu & CII
+                            </button>
+                            <button onclick="askAiAssistant('Báo cáo tình trạng máy móc bảo trì PMS và nhật ký boong mới nhất vừa đồng bộ?')" class="px-3 py-1.5 rounded-full bg-vmu-ocean/50 hover:bg-vmu-cyan hover:text-vmu-darkest border border-vmu-cyan/40 text-xs text-vmu-lightcyan whitespace-nowrap transition">
+                                ⚙️ Hỏi máy móc PMS & Nhật ký
+                            </button>
+                            <button onclick="askAiAssistant('Kiểm tra hồ sơ thuyền viên và chứng chỉ quốc tế STCW trên tàu BIENDONG STAR?')" class="px-3 py-1.5 rounded-full bg-vmu-ocean/50 hover:bg-vmu-cyan hover:text-vmu-darkest border border-vmu-cyan/40 text-xs text-vmu-lightcyan whitespace-nowrap transition">
+                                👨‍✈️ Hỏi thuyền viên & STCW
+                            </button>
+                        </div>
+
+                        <form onsubmit="submitCustomAiQuestion(event)" class="p-3 border-t border-white/10 flex items-center gap-2">
+                            <input id="aiQuestionInput" type="text" placeholder="Nhập câu hỏi tiếng Việt (VD: Tàu BIENDONG STAR đang ở tọa độ nào, còn bao nhiêu tấn dầu?)..." class="flex-1 px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:border-vmu-cyan">
+                            <button type="submit" class="px-5 py-2.5 rounded-xl bg-vmu-cyan hover:bg-vmu-lightcyan text-vmu-darkest font-bold text-xs sm:text-sm transition">
+                                <i class="fa-solid fa-paper-plane mr-1"></i> Gửi
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. KHỐI 3: KIẾN TRÚC KỸ THUẬT & THÔNG SỐ HỆ THỐNG                     -->
+    <!-- ===================================================================== -->
+    <section id="thong-so" class="py-20 bg-gradient-to-b from-vmu-navy via-vmu-darkest to-vmu-navy border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-vmu-ocean/40 border border-vmu-cyan/40 text-vmu-lightcyan text-xs font-bold uppercase tracking-widest mb-3">
+                    <i class="fa-solid fa-server"></i> Kiến trúc Kỹ thuật & Chuẩn mực Quốc tế
+                </div>
+                <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-white">
+                    Thông số Kỹ thuật Chi tiết & 09 Tiêu chuẩn Quốc tế
+                </h2>
+                <p class="mt-2 text-slate-300 text-sm sm:text-base">
+                    Thiết kế tối ưu cho môi trường hàng hải khắc nghiệt với kiến trúc Container hóa, đồng bộ băng thông cực thấp và bảo mật mật mã học.
+                </p>
+            </div>
+
+            <div class="glass-panel rounded-3xl overflow-hidden border border-vmu-lightcyan/30 mb-14 shadow-glass">
+                <div class="bg-vmu-ocean/50 px-6 py-4 border-b border-white/15 flex flex-wrap items-center justify-between gap-2">
+                    <h3 class="font-bold text-white text-base sm:text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-microchip text-vmu-gold"></i>
+                        Bảng Thông số Kỹ thuật Chính của Hệ thống Quản lý Tàu biển Thông minh SSMS
+                    </h3>
+                    <span class="text-xs font-mono text-vmu-goldlight">Khoa Công nghệ thông tin và Khoa Điện - Điện tử • Trường Đại học Hàng hải Việt Nam</span>
+                </div>
+
+                <div class="divide-y divide-white/10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 p-6 gap-4 hover:bg-white/5 transition">
+                        <div class="lg:col-span-4">
+                            <div class="inline-flex items-center gap-2 text-vmu-lightcyan font-bold text-base">
+                                <i class="fa-solid fa-hard-drive"></i>
+                                <span>1. Phần cứng Edge Server (Máy Station trên tàu)</span>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8 space-y-2 text-sm text-slate-200">
+                            <p>• <strong class="text-white">Thiết bị trung tâm:</strong> 01 Máy trạm (Workstation) làm Server cục bộ trên tàu.</p>
+                            <p>• <strong class="text-white">Môi trường vận hành:</strong> <span class="font-mono text-vmu-lightcyan">Docker Compose</span> (Container hóa toàn bộ dịch vụ).</p>
+                            <p>• <strong class="text-white">Kết nối nội bộ:</strong> Cấp phát truy cập qua mạng <span class="font-mono text-emerald-400">LAN / WiFi nội bộ</span> cho thiết bị trên tàu.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 p-6 gap-4 hover:bg-white/5 transition">
+                        <div class="lg:col-span-4">
+                            <div class="inline-flex items-center gap-2 text-vmu-gold font-bold text-base">
+                                <i class="fa-solid fa-layer-group"></i>
+                                <span>2. Nền tảng Công nghệ (Tech Stack)</span>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
+                            <div class="p-3.5 rounded-xl bg-vmu-darkest/70 border border-white/10">
+                                <div class="text-xs font-bold text-vmu-lightcyan uppercase mb-1">Backend & Realtime</div>
+                                <div>ASP.NET Core 8.0 Web API, Entity Framework Core 8, SignalR (<strong class="text-white">80+ Controllers</strong>).</div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-vmu-darkest/70 border border-white/10">
+                                <div class="text-xs font-bold text-emerald-400 uppercase mb-1">Cơ sở dữ liệu & Cache</div>
+                                <div>PostgreSQL 15 (<strong class="text-white">110+ bảng Shore, 60+ bảng Edge</strong>), Redis Cache.</div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-vmu-darkest/70 border border-white/10">
+                                <div class="text-xs font-bold text-amber-400 uppercase mb-1">Frontend Web & Mobile App</div>
+                                <div>React 19, TypeScript, Tailwind CSS (<strong class="text-white">90+ màn hình giao diện</strong>); Mobile App: Flutter / Dart đa nền tảng (Android & iOS).</div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-vmu-darkest/70 border border-white/10">
+                                <div class="text-xs font-bold text-rose-400 uppercase mb-1">Bảo mật & Trí tuệ nhân tạo</div>
+                                <div>JWT Auth, ký số gói tin <strong class="text-white">HMAC-SHA256</strong>, tích hợp <strong class="text-vmu-gold">Gemini AI (LLM)</strong>.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 p-6 gap-4 hover:bg-white/5 transition">
+                        <div class="lg:col-span-4">
+                            <div class="inline-flex items-center gap-2 text-emerald-400 font-bold text-base">
+                                <i class="fa-solid fa-gauge-high"></i>
+                                <span>3. Thông số Đồng bộ & Hiệu năng</span>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8 space-y-2 text-sm text-slate-200">
+                            <p>• <strong class="text-white">Băng thông tối thiểu yêu cầu:</strong> <span class="font-mono text-emerald-400 font-bold">≥ 64 Kbps</span> (hỗ trợ Iridium, VSAT, 4G/LTE, WiFi cảng).</p>
+                            <p>• <strong class="text-white">Thời gian xử lý truy vấn:</strong> <span class="font-mono text-vmu-gold font-bold">~2.84 ms</span> (giảm 86% thời gian nhờ phân trang & tối ưu bộ nhớ).</p>
+                            <p>• <strong class="text-white">Khả năng chịu lỗi:</strong> Hoạt động <strong class="text-vmu-lightcyan">Offline 100%</strong>, tự động khôi phục và gửi bù khi có mạng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-center font-bold text-lg sm:text-xl text-white mb-6">
+                    Đáp ứng 09 Tiêu chuẩn & Công ước Hàng hải Quốc tế (IMO Compliance)
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-9 gap-3">
+                    <div class="glass-panel rounded-2xl p-4 text-center hover:border-vmu-gold transition">
+                        <div class="font-display font-black text-vmu-gold text-base">SOLAS</div>
+                        <div class="text-[11px] text-slate-300 mt-1">An toàn sinh mạng trên biển</div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 text-center hover:border-vmu-gold transition">
+                        <div class="font-display font-black text-vmu-lightcyan text-base">MARPOL</div>
+                        <div class="text-[11px] text-slate-300 mt-1">Ngăn ngừa ô nhiễm biển</div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 text-center hover:border-vmu-gold transition">
+                        <div class="font-display font-black text-emerald-400 text-base">ISM Code</div>
+                        <div class="text-[11px] text-slate-300 mt-1">Quản lý vận hành an toàn</div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 text-center hover:border-vmu-gold transition">
+                        <div class="font-display font-black text-vmu-gold text-base">STCW</div>
+                        <div class="text-[11px] text-slate-300 mt-1">Huấn luyện & Chứng chỉ</div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 text-center hover:border-vmu-gold transition">
+                        <div class="font-display font-black text-vmu-lightcyan text-base">MLC 2006</div>
+                        <div class="text-[11px] text-slate-300 mt-1">Công ước Lao động Hàng hải</div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 text-center hover:border-vmu-gold transition">
+                        <div class="font-display font-black text-emerald-400 text-base">IMO DCS</div>
+                        <div class="text-[11px] text-slate-300 mt-1">Thu thập dữ liệu nhiên liệu</div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 text-center hover:border-vmu-gold transition">
+                        <div class="font-display font-black text-vmu-gold text-base">IMO CII</div>
+                        <div class="text-[11px] text-slate-300 mt-1">Chỉ số cường độ Carbon</div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 text-center hover:border-vmu-gold transition">
+                        <div class="font-display font-black text-vmu-lightcyan text-base">IMO MRV</div>
+                        <div class="text-[11px] text-slate-300 mt-1">Giám sát phát thải CO₂</div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 text-center hover:border-vmu-gold transition col-span-2 sm:col-span-1">
+                        <div class="font-display font-black text-emerald-400 text-base">ISPS</div>
+                        <div class="text-[11px] text-slate-300 mt-1">An ninh tàu và bến cảng</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. FOOTER VỚI ĐỒ HỌA KIẾN TRÚC KHU HIỆU BỘ ĐẶT MỜ (WATERMARK)          -->
+    <!-- ===================================================================== -->
+    <footer class="relative bg-[#000918] border-t-2 border-vmu-blueprint/50 pt-16 pb-12 text-slate-300 text-sm overflow-hidden">
+
+        <!-- ================================================================= -->
+        <!-- ARCHITECTURAL BLUEPRINT WATERMARK BACKGROUND AT FOOTER            -->
+        <!-- ================================================================= -->
+        <div class="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+            <svg class="w-full h-full object-cover object-bottom opacity-25" viewBox="0 0 1600 650" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#4f7df3" stroke-width="2" fill="none">
+                    <path d="M60,620 L60,390 L440,365 L440,620 Z" fill="#00122e" fill-opacity="0.4"/>
+                    <path d="M310,370 L310,315 C310,265 395,265 395,315 L395,368 Z"/>
+                    <ellipse cx="352" cy="315" rx="42" ry="12"/>
+                    <path d="M510,415 L510,280 L720,260 L720,415"/>
+                    <path d="M450,620 L450,425 L1120,350 L1520,375 L1520,635 L1120,625 L450,620 Z" fill="#00122e" fill-opacity="0.5"/>
+                    <text x="585" y="402" fill="#4f7df3" font-family="Montserrat" font-weight="800" font-size="18" letter-spacing="1.5">ĐẠI HỌC HÀNG HẢI VIỆT NAM</text>
+                    <path d="M530,620 L530,520 L690,510 L690,620" stroke="#60A5FA" stroke-width="2.5"/>
+                    <g stroke="#3b66e6" stroke-width="1.4" stroke-opacity="0.8">
+                        <rect x="740" y="420" width="35" height="38"/>
+                        <rect x="800" y="415" width="35" height="38"/>
+                        <rect x="860" y="410" width="35" height="38"/>
+                        <rect x="920" y="405" width="35" height="38"/>
+                        <rect x="980" y="400" width="35" height="38"/>
+                        <rect x="1040" y="395" width="35" height="38"/>
+                        <rect x="1155" y="385" width="160" height="125"/>
+                        <rect x="1335" y="395" width="145" height="120"/>
+                    </g>
+                    <g transform="translate(1035, 75)" stroke="#60A5FA" stroke-width="2.5">
+                        <polygon points="-320,545 160,595 250,570 -240,525" fill="#000918"/>
+                        <line x1="-180" y1="532" x2="-180" y2="235"/>
+                        <line x1="-120" y1="538" x2="-120" y2="210"/>
+                        <line x1="-55" y1="545" x2="-55" y2="185"/>
+                        <path d="M-180,240 L-105,288 L-180,322 Z"/>
+                        <path d="M-120,215 L-42,270 L-120,302 Z"/>
+                        <path d="M-55,190 L28,245 L-55,280 Z"/>
+                        <path d="M25,558 L25,150 L65,175 L105,125 L105,568" fill="#000918"/>
+                        <path d="M-22,280 Q35,255 65,265 L65,372 Q35,362 -22,388 Z" fill="#000918"/>
+                        <path d="M65,265 Q115,240 168,245 L168,352 Q115,345 65,372 Z" fill="#000918"/>
+                        <text x="0" y="338" fill="#60A5FA" font-family="Montserrat" font-weight="800" font-size="24">VMU</text>
+                        <text x="75" y="316" fill="#60A5FA" font-family="Montserrat" font-weight="700" font-size="16">01.4.1956</text>
+                        <path d="M65,405 L65,538 M28,500 Q65,558 102,500" stroke-width="4"/>
+                        <circle cx="65" cy="65" r="54" stroke-width="4"/>
+                        <circle cx="65" cy="65" r="36" stroke-width="2"/>
+                        <circle cx="65" cy="65" r="12"/>
+                        <line x1="65" y1="-5" x2="65" y2="135" stroke-width="3.5"/>
+                        <line x1="-5" y1="65" x2="135" y2="65" stroke-width="3.5"/>
+                        <line x1="12" y1="12" x2="118" y2="118" stroke-width="3.5"/>
+                        <line x1="118" y1="12" x2="12" y2="118" stroke-width="3.5"/>
+                    </g>
+                </g>
+            </svg>
+
+            <img src="Asset 2@4x (1).jpg" alt="Đồ họa kiến trúc Khu Hiệu bộ Trường Đại học Hàng hải Việt Nam"
+                 class="absolute inset-0 w-full h-full object-cover object-bottom opacity-25 mix-blend-screen"
+                 onerror="this.style.opacity='0'">
+
+            <div class="absolute inset-0 bg-gradient-to-t from-[#000918]/60 via-[#000918]/75 to-[#000918]/95"></div>
+        </div>
+
+        <!-- Footer Content Layer -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-10 border-b border-white/15">
+                <div class="lg:col-span-5 space-y-3.5">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-14 h-12 rounded-xl bg-vmu-navy border border-vmu-gold/60 flex items-center justify-center p-1 shrink-0 overflow-hidden relative">
+                            <i class="fa-solid fa-dharmachakra text-2xl text-vmu-gold"></i>
+                            <img src="Logo_VMU_70.jpg" alt="Logo 70 năm Trường Đại học Hàng hải Việt Nam"
+                                 class="vmu-chroma-img absolute inset-0 w-full h-full object-contain p-0.5 emblem-screen-blend"
+                                 onerror="this.style.opacity='0'">
+                        </div>
+                        <div>
+                            <div class="text-[11px] font-bold text-vmu-lightcyan uppercase tracking-wider">BỘ XÂY DỰNG</div>
+                            <div class="font-display font-extrabold text-white text-base sm:text-lg">TRƯỜNG ĐẠI HỌC HÀNG HẢI VIỆT NAM</div>
+                            <div class="text-xs text-vmu-goldlight font-semibold">Kỷ niệm 70 năm thành lập (01/4/1956 — 01/4/2026)</div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        “Phát triển Trường Đại học Hàng hải Việt Nam thành trung tâm đào tạo chất lượng cao, nghiên cứu khoa học, đổi mới sáng tạo, hợp tác chuyển giao - ứng dụng công nghệ, sản xuất thử nghiệm, trong đó lĩnh vực giao thông vận tải và kinh tế biển đạt trình độ khu vực và thế giới; là một trong những trung tâm đào tạo nguồn nhân lực chất lượng cao thuộc nhóm hàng đầu châu Á trong lĩnh vực hàng hải, kinh tế biển và đại dương” (Quyết định Số: 1901/QĐ-TTg ngày 05/9/2025 của Thủ tướng Chính phủ).
+                    </p>
+                    <div class="text-xs font-display font-extrabold text-vmu-gold tracking-wider">
+                        ★ KHẲNG ĐỊNH VỊ THẾ TRONG CÁC LĨNH VỰC MŨI NHỌN
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 space-y-2">
+                    <div class="font-bold uppercase tracking-wider text-xs mb-3 text-vmu-lightcyan">Sản phẩm & Nhóm Phát triển</div>
+                    <div class="text-white font-bold text-sm">Hệ thống quản lý tàu biển thông minh SSMS (Smart Ship Management System)</div>
+                    <div class="text-xs text-slate-300">Đơn vị: Khoa Công nghệ thông tin và Khoa Điện - Điện tử, Trường Đại học Hàng hải Việt Nam</div>
+                    <div class="text-xs text-vmu-goldlight pt-1.5 space-y-1 font-semibold">
+                        <div>• ThS. Phạm Trung Minh</div>
+                        <div>• PGS.TS. Đinh Anh Tuấn</div>
+                        <div>• TS. Đoàn Hữu Khánh</div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-3 space-y-2.5 text-xs">
+                    <div class="font-bold uppercase tracking-wider mb-3 text-vmu-lightcyan">Thông tin Sự kiện & Đơn vị</div>
+                    <p class="text-white font-semibold leading-relaxed">
+                        <i class="fa-solid fa-award text-vmu-gold mr-1.5"></i>Triển lãm thành tựu khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số ngành Xây dựng năm 2026
+                    </p>
+                    <p class="text-slate-300">
+                        <i class="fa-solid fa-location-dot text-vmu-cyan mr-1.5"></i>Trường Đại học Hàng hải Việt Nam: Số 484 Lạch Tray, Phường Kênh Dương, Quận Lê Chân, Thành phố Hải Phòng
+                    </p>
+                    <p class="text-slate-300">
+                        <i class="fa-solid fa-globe text-emerald-400 mr-1.5"></i>Website: www.vimaru.edu.vn
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+                <div>© 2026 Trường Đại học Hàng hải Việt Nam • Hệ thống quản lý tàu biển thông minh SSMS.</div>
+                <div class="flex items-center gap-4 shrink-0">
+                    <a href="#hero" class="text-vmu-lightcyan hover:text-white font-semibold transition"><i class="fa-solid fa-arrow-up mr-1"></i>Lên đầu trang</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL CHI TIẾT BẢN GHI ĐỒNG BỘ & GIẢI QUYẾT XUNG ĐỘT                   -->
+    <!-- ===================================================================== -->
+    <div id="recordDetailModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-panel rounded-3xl max-w-lg w-full p-6 border border-vmu-cyan/50 shadow-2xl">
+            <div class="flex items-center justify-between pb-3 border-b border-white/15 mb-4">
+                <h4 id="modalRecordTitle" class="font-bold text-white text-base flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-vmu-cyan"></i> Chi tiết Bản ghi Đồng bộ Tàu – Bờ
+                </h4>
+                <button onclick="closeRecordDetailModal()" class="text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div id="modalRecordBody" class="text-xs sm:text-sm text-slate-200 space-y-3 font-mono">
+            </div>
+            <div class="mt-6 pt-3 border-t border-white/15 flex justify-end">
+                <button onclick="closeRecordDetailModal()" class="px-5 py-2 rounded-xl bg-vmu-cyan text-vmu-darkest font-bold text-xs">
+                    Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Banner -->
+    <div id="toastBanner" class="fixed bottom-5 right-5 z-50 hidden max-w-md rounded-2xl glass-panel-gold px-5 py-4 text-white shadow-2xl border border-vmu-gold transition-all duration-300">
+        <div class="flex items-start gap-3">
+            <i id="toastIcon" class="fa-solid fa-satellite-dish text-vmu-gold text-lg mt-0.5"></i>
+            <div>
+                <div id="toastTitle" class="font-bold text-xs sm:text-sm text-vmu-goldlight">Thông báo Hệ thống SSMS</div>
+                <div id="toastMessage" class="text-xs text-slate-200 mt-0.5 leading-relaxed"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT: AUTOMATIC SLIDESHOW, CHROMA-KEY, SSMS UI & CANVAS ENGINE  -->
+    <!-- ===================================================================== -->
+    <script>
+        // ---------------------------------------------------------------------
+        // 1. AUTOMATIC 4-SCENE DYNAMIC CAMPUS BACKGROUND ENGINE
+        // ---------------------------------------------------------------------
+        let currentHeroSceneIdx = 0;
+        const totalHeroScenes = 4;
+
+        function startAutomaticSlideshow() {
+            setInterval(() => {
+                currentHeroSceneIdx = (currentHeroSceneIdx + 1) % totalHeroScenes;
+                for (let i = 0; i < totalHeroScenes; i++) {
+                    const slide = document.getElementById(`heroSlide-${i}`);
+                    if (slide) {
+                        if (i === currentHeroSceneIdx) {
+                            slide.classList.add('active');
+                        } else {
+                            slide.classList.remove('active');
+                        }
+                    }
+                }
+            }, 6500);
+        }
+
+        // ---------------------------------------------------------------------
+        // 2. AUTOMATIC CHROMA-KEY BLACK BACKGROUND REMOVAL FOR LOGO_70 & MEDALS
+        // ---------------------------------------------------------------------
+        function removeBlackBackgroundFromImage(imgEl) {
+            if (!imgEl || imgEl.dataset.chromaProcessed === 'true') return;
+            try {
+                const canvas = document.createElement('canvas');
+                const w = imgEl.naturalWidth;
+                const h = imgEl.naturalHeight;
+                if (!w || !h) return;
+                canvas.width = w;
+                canvas.height = h;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(imgEl, 0, 0);
+                const imgData = ctx.getImageData(0, 0, w, h);
+                const data = imgData.data;
+
+                for (let i = 0; i < data.length; i += 4) {
+                    const r = data[i];
+                    const g = data[i + 1];
+                    const b = data[i + 2];
+                    const maxChannel = Math.max(r, g, b);
+                    if (maxChannel < 26) {
+                        data[i + 3] = 0;
+                    } else if (maxChannel < 55) {
+                        data[i + 3] = Math.floor(((maxChannel - 26) / 29) * 255);
+                    }
+                }
+                ctx.putImageData(imgData, 0, 0);
+                imgEl.dataset.chromaProcessed = 'true';
+                imgEl.src = canvas.toDataURL('image/png');
+                imgEl.classList.remove('emblem-screen-blend');
+                imgEl.style.opacity = '1';
+            } catch (err) {
+                imgEl.style.opacity = '1';
+            }
+        }
+
+        function initChromaKeyEmblems() {
+            const emblemImgs = document.querySelectorAll('.vmu-chroma-img');
+            emblemImgs.forEach(img => {
+                if (img.complete && img.naturalWidth > 0) {
+                    removeBlackBackgroundFromImage(img);
+                } else {
+                    img.addEventListener('load', () => removeBlackBackgroundFromImage(img));
+                }
+            });
+        }
+
+        // ---------------------------------------------------------------------
+        // 3. STATE MANAGEMENT FOR SSMS INTERACTIVE INTERFACES
+        // ---------------------------------------------------------------------
+        let isSatelliteOnline = true;
+        let pendingQueueCount = 3;
+        let syncedSuccessCount = 20;
+        let conflictResolvedCount = 10;
+
+        const shoreSyncRecords = [
+            { id: 'record-1', dir: 'Tàu → Bờ', source: 'BIENDONG STAR', type: 'Cảng', action: 'UPDATE', status: 'Xung đột', time: '08:00:00 6/10/2026', detail: 'Tự động giải quyết xung đột theo quyền sở hữu (Master Record tại Bờ được ưu tiên cho danh mục Cảng). Khóa HMAC-SHA256 hợp lệ.' },
+            { id: 'record-2', dir: 'Tàu → Bờ', source: 'BIENDONG STAR', type: 'Cảng', action: 'UPDATE', status: 'Thành công', time: '08:00:00 6/10/2026', detail: 'Đồng bộ Delta Sync thành công (Gói tin nén còn 14 KB). Không trùng lặp.' },
+            { id: 'record-3', dir: 'Tàu → Bờ', source: 'BIENDONG STAR', type: 'Cảng', action: 'UPDATE', status: 'Thành công', time: '08:00:00 6/10/2026', detail: 'Đồng bộ Delta Sync thành công qua kênh vệ tinh 64 Kbps.' },
+            { id: 'record-4', dir: 'Tàu → Bờ', source: 'BIENDONG STAR', type: 'Cảng', action: 'UPDATE', status: 'Xung đột', time: '08:00:00 6/10/2026', detail: 'Xung đột phiên bản timestamp được giải quyết tự động theo luật Sở hữu Phân hệ.' },
+            { id: 'record-5', dir: 'Tàu → Bờ', source: 'BIENDONG STAR', type: 'Cảng', action: 'UPDATE', status: 'Thành công', time: '08:00:00 6/10/2026', detail: 'Đồng bộ thành công • Thời gian xử lý truy vấn tại bờ: 2.84 ms.' },
+            { id: 'record-6', dir: 'Tàu → Bờ', source: 'BIENDONG STAR', type: 'Cảng', action: 'UPDATE', status: 'Thành công', time: '08:00:00 6/10/2026', detail: 'Đồng bộ thành công • Đã xác thực chữ ký HMAC-SHA256.' },
+            { id: 'record-7', dir: 'Tàu → Bờ', source: 'BIENDONG STAR', type: 'Cảng', action: 'UPDATE', status: 'Xung đột', time: '08:00:00 6/10/2026', detail: 'Tự động hợp nhất trường dữ liệu thay đổi (Delta Merge).' },
+            { id: 'record-8', dir: 'Tàu → Bờ', source: 'BIENDONG STAR', type: 'Cảng', action: 'UPDATE', status: 'Thành công', time: '08:00:00 6/10/2026', detail: 'Đồng bộ thành công 100%.' }
+        ];
+
+        function renderShoreSyncTable() {
+            const tbody = document.getElementById('shoreSyncTableBody');
+            const filterVal = document.getElementById('shoreFilterStatus') ? document.getElementById('shoreFilterStatus').value : 'ALL';
+            if (!tbody) return;
+
+            const filtered = shoreSyncRecords.filter(item => {
+                if (filterVal === 'SUCCESS') return item.status === 'Thành công';
+                if (filterVal === 'CONFLICT') return item.status === 'Xung đột';
+                return true;
+            });
+
+            tbody.innerHTML = filtered.map(row => {
+                const badgeClass = row.status === 'Thành công'
+                    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                    : 'bg-amber-50 text-amber-700 border border-amber-200';
+                return `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-2.5 px-2 font-medium">${row.dir}</td>
+                        <td class="py-2.5 px-2 font-semibold text-slate-800">${row.source}</td>
+                        <td class="py-2.5 px-2">${row.type}</td>
+                        <td class="py-2.5 px-2 font-mono text-[11px]">${row.action}</td>
+                        <td class="py-2.5 px-2 font-mono text-slate-600">${row.id}</td>
+                        <td class="py-2.5 px-2">
+                            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${badgeClass}">${row.status}</span>
+                        </td>
+                        <td class="py-2.5 px-2 text-slate-500">${row.time}</td>
+                        <td class="py-2.5 px-2 text-right">
+                            <button onclick="showRecordDetailModal('${row.id} (${row.type})', '${row.detail}')" class="px-2.5 py-1 rounded border border-slate-200 hover:bg-slate-100 text-slate-700 font-medium">
+                                Chi tiết
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            document.getElementById('kpiQueueCount').textContent = pendingQueueCount;
+            document.getElementById('tabQueueInline').textContent = pendingQueueCount;
+            document.getElementById('shoreSidebarQueueNum').textContent = pendingQueueCount;
+            document.getElementById('queueBadgeTab').textContent = `Hàng chờ: ${pendingQueueCount}`;
+            document.getElementById('kpiSuccessCount').textContent = syncedSuccessCount;
+            document.getElementById('kpiConflictCount').textContent = `${conflictResolvedCount} / 0`;
+            document.getElementById('edgeLocalQueueNotice').textContent = `Hàng đợi Store-and-Forward tại tàu: ${pendingQueueCount} bản ghi`;
+        }
+
+        function filterShoreSyncTable() {
+            renderShoreSyncTable();
+        }
+
+        function switchDemoTab(tabName) {
+            const tabs = ['shore', 'edge', 'ai'];
+            tabs.forEach(t => {
+                const panel = document.getElementById(`demoPanel-${t}`);
+                const btn = document.getElementById(`tabBtn-${t}`);
+                if (t === tabName) {
+                    panel.classList.remove('hidden');
+                    btn.className = 'p-4 rounded-2xl text-left transition-all border-2 border-vmu-cyan bg-vmu-ocean/30 shadow-glow-cyan flex items-start gap-3.5';
+                } else {
+                    panel.classList.add('hidden');
+                    btn.className = 'p-4 rounded-2xl text-left transition-all border border-white/15 bg-vmu-navy/60 hover:bg-vmu-navy flex items-start gap-3.5';
+                }
+            });
+        }
+
+        function toggleSatelliteNetwork() {
+            isSatelliteOnline = !isSatelliteOnline;
+            const label = document.getElementById('globalNetStatusLabel');
+            const toggleBtn = document.getElementById('toggleSatBtn');
+            const edgeBadge = document.getElementById('edgeTopConnBadge');
+            const kpiShips = document.getElementById('kpiConnectedShips');
+            const shoreShipSub = document.getElementById('shoreShipSubStatus');
+            const shoreShipBadge = document.getElementById('shoreShipBadge');
+
+            if (!isSatelliteOnline) {
+                label.className = 'text-sm font-bold text-amber-400 flex items-center gap-1.5 mt-0.5';
+                label.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span><span>MẤT SÓNG VỆ TINH: CHẾ ĐỘ OFFLINE TRÊN TÀU</span>';
+                toggleBtn.className = 'px-4 py-2.5 rounded-xl bg-emerald-500 text-vmu-darkest hover:bg-emerald-400 font-bold text-xs transition shadow-glow-cyan';
+                toggleBtn.innerHTML = '<i class="fa-solid fa-satellite-dish mr-1"></i> Kết nối lại Vệ tinh (Đồng bộ)';
+
+                edgeBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-300 font-semibold cursor-pointer';
+                edgeBadge.innerHTML = '<i class="fa-solid fa-plane-slash text-amber-600"></i> Offline • Lưu cục bộ LAN/WiFi Tàu';
+
+                kpiShips.textContent = '0/1';
+                shoreShipSub.innerHTML = '<span class="w-2 h-2 rounded-full bg-amber-500"></span><span>Mất sóng • Đang lưu hàng đợi Edge</span>';
+                shoreShipBadge.className = 'px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 font-bold text-[11px]';
+                shoreShipBadge.textContent = 'Offline';
+
+                showToast('Chế độ Vận hành Offline 100% trên Tàu', 'Phân hệ Edge Server trên máy Station vẫn hoạt động độc lập 100%. Mọi bản ghi Nhật ký Boong mới sẽ được xếp vào hàng đợi Store-and-Forward.');
+            } else {
+                label.className = 'text-sm font-bold text-emerald-400 flex items-center gap-1.5 mt-0.5';
+                label.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span>VSAT/Iridium 64 Kbps: TRỰC TUYẾN</span>';
+                toggleBtn.className = 'px-4 py-2.5 rounded-xl bg-rose-500/20 border border-rose-400/50 text-rose-300 hover:bg-rose-500 hover:text-white font-bold text-xs transition';
+                toggleBtn.innerHTML = '<i class="fa-solid fa-wifi-slash mr-1"></i> Giả lập Mất sóng (Offline)';
+
+                edgeBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold cursor-pointer';
+                edgeBadge.innerHTML = '<i class="fa-solid fa-wifi text-emerald-500"></i> Trực tuyến';
+
+                kpiShips.textContent = '1/1';
+                shoreShipSub.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-500"></span><span>Shore_WiFi • Online</span>';
+                shoreShipBadge.className = 'px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[11px]';
+                shoreShipBadge.textContent = 'Ổn định';
+
+                triggerManualDeltaSync();
+            }
+        }
+
+        function addDeckLogEntry(e) {
+            e.preventDefault();
+            const dt = document.getElementById('logDateTime').value || '10/06/2026 12:00 PM';
+            const watch = document.getElementById('logWatch').value || '00-04';
+            const officer = document.getElementById('logOfficer').value || 'Chief Officer';
+            const lat = document.getElementById('logLat').value || '20.8300';
+            const lon = document.getElementById('logLon').value || '106.7500';
+            const cog = document.getElementById('logCog').value || '120';
+            const sog = document.getElementById('logSog').value || '12.5';
+            const desc = document.getElementById('logDesc').value || 'Routine watch completed';
+
+            const container = document.getElementById('deckLogListContainer');
+            const newId = `record-${shoreSyncRecords.length + 1}`;
+
+            const cardHtml = `
+                <div class="bg-white rounded-xl border-2 border-blue-500 p-5 shadow-md transition-all">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-blue-600 font-bold text-sm">${dt}</span>
+                        <span class="px-2.5 py-1 rounded bg-emerald-100 text-emerald-700 font-bold text-[11px]">
+                            ${isSatelliteOnline ? 'Đã ký & Đồng bộ Bờ' : 'Đã lưu Edge (Chờ sóng)'}
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-xs text-slate-600 mb-2">
+                        <div>POS: <strong class="text-slate-800">${lat}, ${lon}</strong></div>
+                        <div>COG: <strong class="text-slate-800">${cog}°</strong></div>
+                        <div>SOG: <strong class="text-slate-800">${sog} kts</strong></div>
+                    </div>
+                    <div class="text-xs text-slate-600 pb-3 border-b border-slate-100">
+                        OOW: <strong class="text-slate-800">${officer}</strong> | Ca trực: <strong class="text-slate-800">${watch}</strong>
+                    </div>
+                    <div class="pt-3 text-xs text-slate-700 flex flex-wrap items-center justify-between gap-2">
+                        <span>${desc}</span>
+                        <span class="font-mono text-[10px] text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Delta Sync: 0.35 MB (-90%)</span>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('afterbegin', cardHtml);
+
+            document.getElementById('aiTelemetryPos').textContent = `${lat}°N, ${lon}°E (COG ${cog}°, SOG ${sog} kts)`;
+
+            pendingQueueCount += 1;
+            shoreSyncRecords.unshift({
+                id: newId,
+                dir: 'Tàu → Bờ',
+                source: 'BIENDONG STAR',
+                type: 'Nhật ký boong',
+                action: 'INSERT',
+                status: 'Thành công',
+                time: '08:00:00 6/10/2026',
+                detail: `Bản ghi Nhật ký Boong (POS ${lat}, ${lon} - OOW: ${officer}) được nén Delta Sync từ 3.50 MB xuống 0.35 MB và ký số HMAC-SHA256.`
+            });
+
+            if (isSatelliteOnline) {
+                syncedSuccessCount += 1;
+                pendingQueueCount = Math.max(0, pendingQueueCount - 1);
+                showToast('Đã lưu & Đồng bộ tức thời về Bờ!', `Bản ghi Nhật ký Boong (${lat}, ${lon}) đã được nén Delta Sync (0.35 MB) và cập nhật lên Trung tâm Bờ.`);
+            } else {
+                showToast('Đã lưu Offline vào Hàng đợi Tàu!', `Tàu đang mất sóng. Bản ghi (${newId}) đã lưu an toàn vào PostgreSQL Edge và xếp vào hàng đợi Store-and-Forward (${pendingQueueCount} bản ghi chờ).`);
+            }
+
+            renderShoreSyncTable();
+        }
+
+        function signDraftLog() {
+            const masterName = document.getElementById('masterNameInput').value || 'Capt. Nguyễn Văn Hải';
+            const badge = document.getElementById('draftStatusBadge');
+            const controls = document.getElementById('masterSignControls');
+
+            badge.className = 'px-2.5 py-1 rounded bg-emerald-100 text-emerald-700 font-bold text-[11px]';
+            badge.textContent = 'Đã ký';
+
+            controls.innerHTML = `
+                <div class="pt-2 text-xs text-emerald-700 font-semibold flex items-center justify-between">
+                    <span><i class="fa-solid fa-signature mr-1.5"></i>Đã ký số bởi: ${masterName}</span>
+                    <span class="font-mono text-[10px] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">HMAC-SHA256 OK</span>
+                </div>
+            `;
+
+            pendingQueueCount += 1;
+            renderShoreSyncTable();
+            showToast('Ký số Thuyền trưởng thành công!', `Bản ghi Nhật ký Boong 10:00 AM đã được ký xác nhận bởi ${masterName} kèm mã băm HMAC-SHA256 và đưa vào hàng đợi đồng bộ.`);
+        }
+
+        function triggerManualDeltaSync() {
+            if (pendingQueueCount > 0) {
+                const flushed = pendingQueueCount;
+                syncedSuccessCount += flushed;
+                pendingQueueCount = 0;
+                renderShoreSyncTable();
+                document.getElementById('shoreLastUpdated').textContent = `Bờ ↔ Đội tàu • Cập nhật: 08:00:00 6/10/2026 • Đã đồng bộ ${flushed} bản ghi hàng chờ`;
+                showToast('Đồng bộ Store-and-Forward Hoàn tất (100%)', `Đã đẩy toàn bộ ${flushed} bản ghi từ hàng đợi tàu BIENDONG STAR về Trung tâm Bờ qua kênh vệ tinh ≥64 Kbps mà không trùng lặp.`);
+            } else {
+                showToast('Hệ thống Đồng bộ Ổn định', 'Toàn bộ hàng đợi Tàu ⇄ Bờ đã được đồng bộ 100%. Thời gian xử lý truy vấn đạt ~2.84 ms.');
+            }
+        }
+
+        function createShoreOutboundQueue() {
+            pendingQueueCount += 1;
+            shoreSyncRecords.unshift({
+                id: `record-${shoreSyncRecords.length + 1}`,
+                dir: 'Bờ → Tàu',
+                source: 'BIENDONG STAR',
+                type: 'CC chức danh',
+                action: 'UPDATE',
+                status: 'Thành công',
+                time: '08:00:00 6/10/2026',
+                detail: 'Cập nhật chứng chỉ chức danh thuyền viên STCW và lịch bảo trì PMS từ Trung tâm Bờ gửi xuống tàu BIENDONG STAR.'
+            });
+            renderShoreSyncTable();
+            showToast('Đã tạo hàng chờ gửi xuống Tàu', 'Gói dữ liệu từ Trung tâm Bờ đã được xếp hàng đợi ưu tiên để đồng bộ xuống máy Station trên tàu.');
+        }
+
+        function verifyShoreDataIntegrity() {
+            showToast('Kiểm tra Toàn vẹn Dữ liệu Bờ', '100% bản ghi trên 110+ bảng PostgreSQL tại Bờ khớp chữ ký số HMAC-SHA256 với Edge Server trên tàu BIENDONG STAR.');
+        }
+
+        // ---------------------------------------------------------------------
+        // 4. VIETNAMESE AI ASSISTANT (GEMINI LLM SIMULATION)
+        // ---------------------------------------------------------------------
+        function askAiAssistant(questionText) {
+            const chatBox = document.getElementById('aiChatMessages');
+            const posText = document.getElementById('aiTelemetryPos').textContent;
+
+            const userBubble = `
+                <div class="flex items-start justify-end gap-3">
+                    <div class="rounded-2xl rounded-tr-none bg-vmu-ocean text-white p-3.5 text-xs sm:text-sm max-w-lg">
+                        ${questionText}
+                    </div>
+                </div>
+            `;
+            chatBox.insertAdjacentHTML('beforeend', userBubble);
+
+            let aiReply = '';
+            const qLower = questionText.toLowerCase();
+
+            if (qLower.includes('dầu') || qLower.includes('nhiên liệu') || qLower.includes('cii')) {
+                aiReply = `Dữ liệu Noon Report vừa đồng bộ từ tàu <strong>M/V BIENDONG STAR</strong> về Trung tâm Bờ của <strong>Trường Đại học Hàng hải Việt Nam</strong> cho thấy:<br>
+                • <strong>Tồn kho nhiên liệu (ROB):</strong> VLSFO còn <strong>412.5 MT</strong>, MGO còn <strong>68.2 MT</strong> (Đủ hành trình 18 ngày tiếp theo).<br>
+                • <strong>Mức tiêu thụ 24h qua:</strong> 18.4 MT/ngày ở tốc độ 12.5 kts.<br>
+                • <strong>Chỉ số phát thải IMO CII / DCS:</strong> Đạt <strong>Hạng A</strong>, tuân thủ hoàn toàn công ước MARPOL Annex VI.`;
+            } else if (qLower.includes('máy') || qLower.includes('pms') || qLower.includes('bảo trì') || qLower.includes('nhật ký')) {
+                aiReply = `Theo bản ghi <strong>Nhật ký Boong (SOLAS Chapter V)</strong> và hệ thống <strong>PMS</strong> vừa đồng bộ từ máy trạm Station trên tàu:<br>
+                • <strong>Tọa độ & Hành trình mới nhất:</strong> <span class="font-mono text-vmu-gold">${posText}</span>.<br>
+                • <strong>Tình trạng Máy chính (MAN B&W 6S50ME-C):</strong> Hoạt động ổn định, nhiệt độ khí xả trung bình 345°C.<br>
+                • <strong>Kế hoạch bảo trì (PMS):</strong> 100% đầu việc bảo trì định kỳ đã hoàn thành đúng hạn, 0 công việc quá hạn.`;
+            } else if (qLower.includes('thuyền viên') || qLower.includes('stcw') || qLower.includes('chứng chỉ')) {
+                aiReply = `Hệ thống Quản lý Thuyền viên (đồng bộ 2 chiều Tàu – Bờ) xác nhận:<br>
+                • <strong>Tổng số thuyền viên trên tàu BIENDONG STAR:</strong> 22/22 thuyền viên, do <strong>Capt. Nguyễn Văn Hải</strong> làm Thuyền trưởng.<br>
+                • <strong>Chứng chỉ quốc tế STCW & MLC 2006:</strong> 100% chứng chỉ chuyên môn và khám sức khỏe đều hợp lệ và còn thời hạn trên 180 ngày.`;
+            } else {
+                aiReply = `Trợ lý Gemini AI của Hệ thống SSMS (<strong>Trường Đại học Hàng hải Việt Nam</strong>) đã truy vấn cơ sở dữ liệu Shore (phản hồi <strong>~2.84 ms</strong>):<br>
+                • Tàu <strong>BIENDONG STAR</strong> đang hoạt động tại vị trí <span class="font-mono text-vmu-gold">${posText}</span>.<br>
+                • Tồn dầu VLSFO: <strong>412.5 MT</strong> | Máy chính PMS: <strong>An toàn 100%</strong> | Đã đồng bộ thành công <strong>${syncedSuccessCount} bản ghi</strong> qua gói tin nén Delta Sync (-90% dung lượng).`;
+            }
+
+            setTimeout(() => {
+                const aiBubble = `
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-vmu-cyan/20 border border-vmu-cyan text-vmu-lightcyan flex items-center justify-center shrink-0 mt-0.5">
+                            <i class="fa-solid fa-robot text-xs"></i>
+                        </div>
+                        <div class="rounded-2xl rounded-tl-none bg-vmu-navy/90 border border-vmu-cyan/30 p-3.5 text-slate-200 text-xs sm:text-sm leading-relaxed">
+                            ${aiReply}
+                        </div>
+                    </div>
+                `;
+                chatBox.insertAdjacentHTML('beforeend', aiBubble);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 220);
+        }
+
+        function submitCustomAiQuestion(e) {
+            e.preventDefault();
+            const input = document.getElementById('aiQuestionInput');
+            const val = input.value.trim();
+            if (!val) return;
+            input.value = '';
+            askAiAssistant(val);
+        }
+
+        // ---------------------------------------------------------------------
+        // 5. UI HELPERS (MODAL, TOAST, MOBILE MENU)
+        // ---------------------------------------------------------------------
+        function showRecordDetailModal(title, detailText) {
+            document.getElementById('modalRecordTitle').innerHTML = `<i class="fa-solid fa-shield-halved text-vmu-cyan"></i> Bản ghi: ${title}`;
+            document.getElementById('modalRecordBody').innerHTML = `
+                <div class="p-3.5 rounded-xl bg-vmu-darkest border border-white/10">
+                    <div class="text-vmu-lightcyan font-bold mb-1">Cơ chế Xử lý & Đồng bộ:</div>
+                    <p class="text-slate-200 leading-relaxed">${detailText}</p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-vmu-darkest border border-white/10 text-xs space-y-1">
+                    <div>• <span class="text-slate-400">Thuật toán nén:</span> <span class="text-emerald-400">Delta Sync (-90% dung lượng, 3.50MB ➔ 0.35MB)</span></div>
+                    <div>• <span class="text-slate-400">Chữ ký gói tin:</span> <span class="text-vmu-gold">HMAC-SHA256 Verified</span></div>
+                    <div>• <span class="text-slate-400">Khóa chống trùng lặp:</span> <span class="text-vmu-lightcyan">Idempotency Key Active</span></div>
+                </div>
+            `;
+            document.getElementById('recordDetailModal').classList.remove('hidden');
+        }
+
+        function closeRecordDetailModal() {
+            document.getElementById('recordDetailModal').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        let toastTimer = null;
+        function showToast(title, message) {
+            const banner = document.getElementById('toastBanner');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMessage').textContent = message;
+            banner.classList.remove('hidden');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                banner.classList.add('hidden');
+            }, 5000);
+        }
+
+        // ---------------------------------------------------------------------
+        // 6. MARITIME DIGITAL WAVE & SATELLITE CONSTELLATION CANVAS
+        // ---------------------------------------------------------------------
+        function initMaritimeCanvas() {
+            const canvas = document.getElementById('maritimeCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let nodes = [];
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                const count = Math.min(42, Math.floor(width / 34));
+                nodes = Array.from({ length: count }, () => ({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4,
+                    r: Math.random() * 2 + 1
+                }));
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+
+                for (let i = 0; i < nodes.length; i++) {
+                    const n1 = nodes[i];
+                    n1.x += n1.vx;
+                    n1.y += n1.vy;
+
+                    if (n1.x < 0 || n1.x > width) n1.vx *= -1;
+                    if (n1.y < 0 || n1.y > height) n1.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(n1.x, n1.y, n1.r, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(56, 189, 248, 0.6)';
+                    ctx.fill();
+
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const n2 = nodes[j];
+                        const dx = n1.x - n2.x;
+                        const dy = n1.y - n2.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 145) {
+                            ctx.beginPath();
+                            ctx.moveTo(n1.x, n1.y);
+                            ctx.lineTo(n2.x, n2.y);
+                            ctx.strokeStyle = `rgba(0, 180, 216, ${0.16 * (1 - dist / 145)})`;
+                            ctx.lineWidth = 1;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            draw();
+        }
+
+        // Initialize Everything on Window Load
+        window.onload = function() {
+            renderShoreSyncTable();
+            initMaritimeCanvas();
+            initChromaKeyEmblems();
+            startAutomaticSlideshow();
+        };
+    </script>
+</body>
+</html>
